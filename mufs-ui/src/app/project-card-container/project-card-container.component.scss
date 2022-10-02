@@ -1,0 +1,38 @@
+.container-sm {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 50px;
+  background-color: white;
+  height: 400px;
+  border-radius: 20px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  p {
+    font-size: 1.1em;
+    padding-top: 20px;
+    height: 300px;
+  }
+  a {
+    text-decoration: none;
+    h3 {
+      color: blue;
+      text-decoration: underline;
+      text-underline-offset: 5px;
+    }
+  }
+
+  .link-project-about {
+    text-decoration: none;
+    color: blue;
+    font-size: 1.3em;
+    border: 1px solid black;
+    border-radius: 20px;
+    width: 200px;
+    text-align: center;
+    padding: 10px;
+    justify-self: flex-end;
+  }
+  &:hover {
+  }
+}

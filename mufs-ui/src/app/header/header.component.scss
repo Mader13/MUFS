@@ -1,47 +1,51 @@
+nav {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.navbar {
+  padding: 25px 100px 25px 100px;
+  margin-bottom: 50px;
 
-.navbar{
-    padding: 25px 100px 25px 100px;
-    
+  .navbar-brand {
+    img {
+      height: 80px;
+      width: 80px;
+    }
 
-    .navbar-brand {
-        font-size:2em;
-        font-weight: bold;
-        margin-right: 50px;
+    font-weight: bold;
+    margin-right: 25px;
+  }
 
+  .nav-link {
+    font-size: 1.3em;
+    margin: auto 10px auto 10px;
+    padding: 15px;
+    border-radius: 20px;
+    color: blue;
+    font-weight: 600;
+  }
+  .nav-link:hover {
+    background-color: rgba(217, 217, 217, 1);
+    transition: color 0.5s;
+  }
+
+  .d-flex {
+    input,
+    button {
+      color: black;
+      border-radius: 20px;
+      font-size: 1.3em;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     }
-    
-    .nav-link{
-        font-size: 1.3em;
-        margin: auto 10px auto 10px;
-        padding: 15px;
-        border-radius: 20px;
-        color: blue;
-        font-weight: 600;
+    button {
+      border: 1px solid;
+      width: 150px;
     }
-    .nav-link:hover{
-        background-color: rgba(217, 217, 217, 1);
-        transition: color 0.5s;
+    button:hover {
+      background-color: rgba(217, 217, 217, 1);
     }
-    
-    
-    .d-flex{
-        input, button{
-            color: black;
-            border-radius: 20px;
-            font-size:1.3em;
-            
-        }
-        button {
-            border: 1px solid;
-            width: 150px;
-        }
-        button:hover{
-            background-color: rgba(217, 217, 217, 1);
-        }
-        .form-control.me-2 {
-            height:60px;
-            width: 800px;
-            
-        }
+    .form-control.me-2 {
+      height: 60px;
+      width: 800px;
     }
+  }
 }
