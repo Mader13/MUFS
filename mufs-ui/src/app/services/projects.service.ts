@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class ProjectsService {
-  private baseUrl: string = 'http://localhost:3000/project';
+  private baseUrl: string = '/project';
 
   constructor(private _httpClient: HttpClient) {}
 

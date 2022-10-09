@@ -1,8 +1,17 @@
 const express = require("express");
 require("../db/mongoose");
 var router = express.Router();
-const projectRouter = require("../routes/project");
+const projectRouter = require("./project");
 const app = express();
+const port = process.env.PORT || 8080;
+const path = require("path");
+
+app.use(express.static("public"));
+
+app.get("/", (req, res) => {
+  // res.sendFile(path.join("../" + __dirname, "public/index.html"));
+  res.sendFile(path.resolve("mufs-api/public/index.html"));
+});
 
 app.use(express.json());
 
@@ -22,10 +31,8 @@ app.all("/*", (req, res, next) => {
   next();
 });
 
-app.listen(3000, () => {
-  console.log("app is running on port 3000");
+app.listen(port, () => {
+  console.log("app is running on port 8080");
 });
-
-/* GET home page. */
 
 module.exports = router;
