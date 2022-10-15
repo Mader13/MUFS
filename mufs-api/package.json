@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node routes/index.js",
     "dev": "nodemon routes/index.js",
-    "build": "npm install"
+    "build": "npm install",
+    "postinstall": "ng build --prod"
   },
   "dependencies": {
     "@angular/cli": "~14.2.4",
