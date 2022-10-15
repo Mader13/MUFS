@@ -1,6 +1,9 @@
 {
   "name": "mufs",
   "version": "1.0.0",
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
     "start": "cd mufs-api/public && npm start ",
     "prebuild": "cd mufs-api && npm run build",
