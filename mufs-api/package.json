@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node routes/index.js",
-    "dev": "nodemon routes/index.js"
+    "dev": "nodemon routes/index.js",
+    "build": "npm install"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
