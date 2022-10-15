@@ -9,6 +9,8 @@
     "build": "npm install"
   },
   "dependencies": {
+    "@angular/cli": "~14.2.4",
+    "@angular/compiler-cli": "^14.2.0",
     "@angular/animations": "^14.2.0",
     "@angular/common": "^14.2.0",
     "@angular/compiler": "^14.2.0",
@@ -38,8 +40,6 @@
     "tslib": "^2.3.0",
     "validation": "^0.0.1",
     "zone.js": "~0.11.4",
-    "@angular/cli": "~14.2.4",
-    "@angular/compiler-cli": "^14.2.0",
     "@types/jasmine": "~4.0.0",
     "@types/leaflet": "^1.7.9",
     "@types/node": "^12.11.1",
