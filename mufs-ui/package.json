@@ -1,14 +1,17 @@
 {
   "name": "mufs",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "npm install --force && ng build --configuration production",
+    "build": "npm install --force && ng build",
     "dev": "nodemon src/index.js"
   },
   "private": true,
   "dependencies": {
+    "@angular-devkit/build-angular": "^14.2.4",
+    "@angular/cli": "~14.2.4",
+    "@angular/compiler-cli": "^14.2.0",
     "@angular/animations": "^14.2.0",
     "@angular/common": "^14.2.0",
     "@angular/compiler": "^14.2.0",
@@ -31,19 +34,12 @@
     "tslib": "^2.3.0",
     "validation": "^0.0.1",
     "zone.js": "~0.11.4",
-    "@angular-devkit/build-angular": "^14.2.4",
-    "@angular/cli": "~14.2.4",
-    "@angular/compiler-cli": "^14.2.0",
     "@types/jasmine": "~4.0.0",
     "@types/leaflet": "^1.7.9",
     "@types/node": "^12.11.1",
     "typescript": "~4.7.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^14.2.4",
-    "@angular/cli": "~14.2.4",
-    "@angular/compiler-cli": "^14.2.0",
-    "@types/jasmine": "~4.0.0",
     "jasmine-core": "~4.3.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
