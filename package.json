@@ -2,7 +2,8 @@
   "name": "mufs",
   "version": "1.0.0",
   "engines": {
-    "node": "16.x"
+    "node": "16.17.1",
+    "npm": "8.19.2"
   },
   "scripts": {
     "start": "cd mufs-api/public && npm start ",
