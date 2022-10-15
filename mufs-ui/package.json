@@ -4,8 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "npm install --force && ng build",
-    "dev": "nodemon src/index.js"
+    "build": "npm install && ng build",
+    "dev": "nodemon src/index.js",
+    "heroku-postbuild": "ng build"
   },
   "private": true,
   "dependencies": {
