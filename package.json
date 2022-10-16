@@ -1,0 +1,9 @@
+{
+  "name": "mufs",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "cd mufs-api/built && node server.js",
+    "prebuild": "cd mufs-api && npm run build",
+    "build": "cd mufs-ui && npm run build"
+  }
+}
