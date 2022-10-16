@@ -1,0 +1,13 @@
+<app-not-found
+  [visible]="!projects || !projects.length"
+  resetLinkText="Сбросить поиск"
+></app-not-found>
+<div *ngFor="let project of projects" class="container-sm">
+  <a routerLink="/projects/{{ project.id }}"
+    ><h2>{{ project.title }}</h2></a
+  >
+  <p>
+    {{ project.description }}
+  </p>
+  <a class="link-project-about" href="#">Узнать больше</a>
+</div>

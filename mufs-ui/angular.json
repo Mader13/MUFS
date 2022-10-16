@@ -3,11 +3,33 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "mufs": {
+    "mufs-ui": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "skipTests": true
+        },
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "skipTests": true
+        },
+        "@schematics/angular:interceptor": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:resolver": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
         }
       },
       "root": "",
@@ -17,18 +39,15 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "../mufs-api/public",
+            "outputPath": "dist/mufs-ui",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.scss"
-            ],
-            "scripts": ["node_modules/bootstrap/dist/js/bootstrap.min.js"]
+            "styles": ["src/styles.scss"],
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -67,10 +86,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "mufs:build:production"
+              "browserTarget": "mufs-ui:build:production"
             },
             "development": {
-              "browserTarget": "mufs:build:development"
+              "browserTarget": "mufs-ui:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -78,7 +97,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "mufs:build"
+            "browserTarget": "mufs-ui:build"
           }
         },
         "test": {
@@ -90,7 +109,7 @@
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.scss"],
+            "styles": ["src/styles.scss", "node_modules/ngs-toastr/toastr.css"],
             "scripts": []
           }
         }
@@ -98,6 +117,6 @@
     }
   },
   "cli": {
-    "analytics": "62e003c0-3fef-47ab-bb73-eccc422b1f63"
+    "analytics": "30134314-e526-494f-a38f-d70c97df3ebb"
   }
 }

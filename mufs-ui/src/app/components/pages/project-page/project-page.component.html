@@ -1,0 +1,8 @@
+<app-not-found
+  [visible]="!project"
+  notFoundMessage="Проект не найден"
+  resetLinkText="Вернуться на главную страницу"
+></app-not-found>
+<div *ngIf="project.id" class="container-sm">
+  <h1>{{ project.title }}</h1>
+</div>
