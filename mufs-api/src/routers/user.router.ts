@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 import asyncHandler from "express-async-handler";
 import { User, UserModel } from "../models/user.model";
 import { HTTP_BAD_REQUEST } from "../constants/http_status";
-import bcrypt from "bcryptjs";
+const bcrypt = require("bcryptjs");
 const router = Router();
 
 router.get(
