@@ -17,6 +17,7 @@ import { RegisterUserPageComponent } from './components/pages/register-user-page
 import { InputContainerComponent } from './components/partials/input-container/input-container.component';
 import { InputValidationComponent } from './components/partials/input-validation/input-validation.component';
 import { TextInputComponent } from './components/partials/text-input/text-input.component';
+import { NgxNavbarModule } from 'ngx-bootstrap-navbar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +44,7 @@ import { TextInputComponent } from './components/partials/text-input/text-input.
       positionClass: 'toast-bottom-right',
       newestOnTop: false,
     }),
+    NgxNavbarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
