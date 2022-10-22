@@ -32,8 +32,8 @@ export class HeaderComponent implements OnInit {
     this.userService.logout();
   }
 
-  get isAuth() {
-    return this.user.token;
+  get getEmail() {
+    return this.user.email;
   }
 
   search(term: string): void {

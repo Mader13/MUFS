@@ -1,12 +1,22 @@
 <nav class="navbar navbar-expand-lg navbar-light">
+  <a class="navbar-brand" href="#">
+    <img src="../../assets/images/Logo.svg" width="100" height="90" alt="" />
+  </a>
+  <form class="d-flex">
+    <input
+      #s
+      class="form-control me-2"
+      type="search"
+      placeholder="Поиск..."
+      aria-label="Search"
+      (keyup.enter)="search(s.value)"
+      [value]="searchTerm"
+    />
+    <button class="btn btn-outline-success" (click)="search(s.value)">
+      Поиск
+    </button>
+  </form>
   <div class="container-fluid">
-    <a *ngIf="!isAuth" routerLink="/login">Логин</a>
-    <div *ngIf="isAuth" class="navbar-container">
-      <a class="navbar-name" routerLink="/profile">
-        {{ user.name }}
-      </a>
-      <a (click)="logout()">Выйти из аккаунта</a>
-    </div>
     <div class="collapse navbar-collapse" id="navbarScroll">
       <ul
         class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
@@ -19,20 +29,15 @@
           <a class="nav-link" routerLink="/resumes">Резюме</a>
         </li>
       </ul>
-      <form class="d-flex">
-        <input
-          #s
-          class="form-control me-2"
-          type="search"
-          placeholder="Поиск..."
-          aria-label="Search"
-          (keyup.enter)="search(s.value)"
-          [value]="searchTerm"
-        />
-        <button class="btn btn-outline-success" (click)="search(s.value)">
-          Поиск
-        </button>
-      </form>
+    </div>
+    <div *ngIf="!getEmail" class="login-btn-container">
+      <a routerLink="/login">Логин</a>
+    </div>
+    <div *ngIf="getEmail" class="navbar-container">
+      <a class="navbar-name" routerLink="/profile">
+        {{ user.name }}
+      </a>
+      <a (click)="logout()">Выйти из аккаунта</a>
     </div>
   </div>
 </nav>

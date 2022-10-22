@@ -1,0 +1,93 @@
+.container {
+  display: flex;
+  .leader-and-members {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .leader-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 450px;
+      width: 380px;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      margin-bottom: 36px;
+      .leader-profile {
+        display: flex;
+        flex-direction: row;
+        width: 335px;
+        background-color: rgba(245, 245, 245, 1);
+        border-radius: 8px;
+        margin: 36px;
+        min-height: 62px;
+        padding: 14px 22px;
+        align-items: center;
+        span {
+          font-size: 1.1em;
+        }
+        .leader-sign {
+          font-size: 0.9em;
+          color: rgba(62, 62, 120, 1);
+        }
+        .leader-profile-picture {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          margin-right: 20px;
+        }
+      }
+      .about-leader {
+        h3 {
+          text-align: center;
+          font-weight: bold;
+        }
+        p {
+          padding: 16px 38px;
+          line-height: 1.25;
+          letter-spacing: 0.2mm;
+        }
+      }
+    }
+
+    .members-count {
+      display: flex;
+      align-items: center;
+      width: 380px;
+      height: 140px;
+      border-top: 44px solid rgba(62, 62, 120, 1);
+      border-radius: 6px;
+      margin-bottom: 36px;
+      span {
+        font-size: 1.3em;
+        color: rgba(62, 62, 120, 1);
+        margin: 0 auto;
+      }
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+
+    button {
+      width: 340px;
+      height: 60px;
+      background-color: white;
+      border: 8px solid rgba(62, 62, 120, 1);
+      border-radius: 8px;
+      font-size: 1.2em;
+      color: rgba(62, 62, 120, 1);
+      font-weight: bold;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+  }
+  .project-info {
+    margin: 0 20px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 38px;
+    h1 {
+      font-weight: bold;
+      text-align: center;
+      border-bottom: 44px solid rgba(62, 62, 120, 1);
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+    }
+    min-height: 600px;
+  }
+}

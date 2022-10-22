@@ -3,10 +3,14 @@ import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { IUserLogin } from '../shared/interfaces/IUserLogin';
-import { USER_LOGIN_URL } from '../shared/models/constants/urls';
+import {
+  USER_LOGIN_URL,
+  USER_REGISTER_URL,
+} from '../shared/models/constants/urls';
 import { User } from '../shared/models/User';
+import { IUserRegister } from './../shared/interfaces/IUserRegister';
 
-const USER_KEY = 'user';
+const USER_KEY = 'User';
 
 @Injectable({
   providedIn: 'root',
@@ -35,6 +39,27 @@ export class UserService {
           this.toastrService.error(
             errorResponse.error,
             'Авторизация прошла неуспешно'
+          );
+        },
+      })
+    );
+  }
+
+  register(userRegister: IUserRegister): Observable<User> {
+    return this.http.post<User>(USER_REGISTER_URL, userRegister).pipe(
+      tap({
+        next: (user) => {
+          this.setUserToLocalStorage(user);
+          this.userSubject.next(user);
+          this.toastrService.success(
+            `Добро пожаловать на сайт открытых проектов, ${user.name}.`,
+            'Регистрация прошла успешно.'
+          );
+        },
+        error: (errorResponse) => {
+          this.toastrService.error(
+            errorResponse.error,
+            'Регистрация не удалась, попробуйте снова.'
           );
         },
       })

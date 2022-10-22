@@ -3,6 +3,41 @@
   notFoundMessage="Проект не найден"
   resetLinkText="Вернуться на главную страницу"
 ></app-not-found>
-<div *ngIf="project.id" class="container-sm">
-  <h1>{{ project.title }}</h1>
+
+<div *ngIf="project.id" class="container">
+  <div class="row justify-content-between flex-wrap">
+    <div class="col-sm-3 leader-and-members">
+      <div class="leader-info">
+        <div class="leader-profile">
+          <img
+            src="../../../../assets/images/User-profile-picture.png"
+            alt="Profile image"
+            class="leader-profile-picture image-responsive col-sm-3"
+          />
+          <div class="col-sm-7 leader-name">
+            <span>Иван Иванов</span><br />
+            <span class="leader-sign">Лидер проекта</span>
+          </div>
+        </div>
+        <div class="about-leader">
+          <h3>О лидере</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam
+            provident adipisci exercitationem possimus vitae voluptatibus quidem
+            doloribus perferendis assumenda quis?
+          </p>
+        </div>
+      </div>
+      <div class="members-count">
+        <span>Уже участвуют в проекте: {{ project.members?.length }}</span>
+      </div>
+      <button class="btn btn-primary">Участвовать</button>
+    </div>
+    <div class="col-sm-8 project-info">
+      <h1>{{ project.title }}</h1>
+      <p>
+        {{ project.description }}
+      </p>
+    </div>
+  </div>
 </div>

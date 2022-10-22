@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="details">
+    <form [formGroup]="registerForm" (ngSubmit)="submit()">
+      <text-input
+        [control]="fc.name"
+        [showErrorsWhen]="isSubmitted"
+        label="Имя Фамилия"
+      ></text-input>
+      <text-input
+        [control]="fc.email"
+        [showErrorsWhen]="isSubmitted"
+        label="Электронная почта"
+        type="email"
+      ></text-input>
+      <text-input
+        [control]="fc.password"
+        [showErrorsWhen]="isSubmitted"
+        label="Пароль"
+        type="password"
+      ></text-input>
+      <text-input
+        [control]="fc.confirmPassword"
+        [showErrorsWhen]="isSubmitted"
+        label="Повторите пароль"
+        type="password"
+      ></text-input>
+      <text-input
+        [control]="fc.skills"
+        [showErrorsWhen]="isSubmitted"
+        label="Ваши навыки. Не менее 50 символов"
+      ></text-input>
+      <button>Зарегистрироваться</button>
+      <div class="login">
+        Уже пользователь? &nbsp;
+        <a routerLink="/login" [queryParams]="{ returnUrl: returnUrl }"
+          >Войти</a
+        >
+      </div>
+    </form>
+  </div>
+</div>

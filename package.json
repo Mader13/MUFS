@@ -5,5 +5,9 @@
     "start": "cd mufs-api/built && node server.js",
     "prebuild": "cd mufs-api && npm run build",
     "build": "cd mufs-ui && npm run build"
+  },
+  "dependencies": {
+    "bootstrap": "^5.2.2",
+    "npx": "^10.2.2"
   }
 }

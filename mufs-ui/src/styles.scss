@@ -1,1 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import "~ngx-toastr/toastr";
+
+@font-face {
+  font-family: "Roboto Regular";
+  src: url(./assets/fonts/RobotoCondensed-Regular.ttf);
+}
+@font-face {
+  font-family: "Roboto LightItalic";
+  src: url(./assets/fonts/RobotoCondensed-LightItalic.ttf);
+}
+@font-face {
+  font-family: "Roboto Light";
+  src: url(./assets/fonts/RobotoCondensed-Light.ttf);
+}
+@font-face {
+  font-family: "Roboto Italic";
+  src: url(./assets/fonts/RobotoCondensed-Italic.ttf);
+}
+@font-face {
+  font-family: "Roboto BoldItalic";
+  src: url(./assets/fonts/RobotoCondensed-BoldItalic.ttf);
+}
+@font-face {
+  font-family: "Roboto Bold";
+  src: url(./assets/fonts/RobotoCondensed-Bold.ttf);
+}
+
+* {
+  font-family: "Roboto Regular";
+}
