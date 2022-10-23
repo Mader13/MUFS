@@ -17,39 +17,44 @@ nav {
   }
 
   .nav-link {
-    font-size: 1.3em;
-    margin: auto 25px auto 25px;
-    padding: 15px;
-    border-radius: 20px;
+    font-size: 1.05em;
+    margin: auto 10px;
+    padding: 18px;
+    border-radius: 8px;
     color: white;
     font-weight: 600;
+    background-color: rgba(56, 64, 255, 1);
   }
   .nav-link:hover {
-    background-color: rgba(56, 64, 255, 1);
+    background-color: rgb(37, 42, 173);
     transition: color 0.5s;
   }
 
   .d-flex {
-    input,
-    button {
-      color: black;
-      border-radius: 20px;
-      font-size: 1.3em;
-      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    }
     input {
+      color: black;
+      border-radius: 8px;
+      font-size: 1.05em;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
       padding-left: 20px;
+      margin-right: 10px;
     }
+
     button {
-      border: 1px solid;
-      width: 150px;
+      font-size: 1.1em;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+      background-color: rgba(56, 64, 255, 1);
+      border: 1px solid rgba(0, 0, 0, 0);
+      padding: 5px 20px;
     }
     button:hover {
-      background-color: rgba(56, 64, 255, 1);
+      background-color: rgb(37, 42, 173);
     }
     .form-control.me-2 {
       height: 60px;
-      width: 800px;
+      width: 500px;
     }
   }
 
@@ -100,7 +105,7 @@ nav {
 
   /* Change color of dropdown links on hover */
   .dropdown-content a:hover {
-    background-color: rgba(56, 64, 255, 1);
+    background-color: rgb(37, 42, 173);
     border-radius: 8px;
   }
 
@@ -109,12 +114,19 @@ nav {
     display: block;
   }
   .login-btn {
-    font-size: 1.3em;
+    font-size: 1.1em;
     font-weight: bold;
     color: white;
     text-decoration: none;
     background-color: rgba(56, 64, 255, 1);
-    padding: 10px 20px;
+    border: 1px solid rgba(0, 0, 0, 0);
+    padding: 5px 20px;
+    height: 60px;
+    border-radius: 8px;
+  }
+  .login-btn:hover {
+    background-color: rgb(37, 42, 173);
+    transition: color 0.5s;
   }
   /* Change the background color of the dropdown button when the dropdown content is shown */
 }
