@@ -24,11 +24,15 @@
         label="Повторите пароль"
         type="password"
       ></text-input>
-      <text-input
-        [control]="fc.skills"
-        [showErrorsWhen]="isSubmitted"
-        label="Ваши навыки. Не менее 50 символов"
-      ></text-input>
+      <div class="skills">
+        <text-input
+          [control]="fc.skills"
+          [showErrorsWhen]="isSubmitted"
+          label="Навыки"
+          type="text"
+        ></text-input>
+      </div>
+
       <button>Зарегистрироваться</button>
       <div class="login">
         Уже пользователь? &nbsp;

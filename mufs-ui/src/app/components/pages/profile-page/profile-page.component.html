@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="shape">
+    <img
+      class="profile-picture"
+      src="../../../../assets/images/User-profile-picture.png"
+      alt=""
+    />
+  </div>
+  <div *ngIf="user.email" class="user-info">
+    <h2 class="user-name">
+      {{ user.name }} <br />
+      <small class="text-muted">{{ user.email }}</small>
+    </h2>
+    <div class="container px-4">
+      <div class="row gx-5">
+        <div class="col change-password">
+          <h3>Сменить пароль</h3>
+          <label>Старый пароль</label>
+          <input type="password" name="oldPassword" value="" />
+          <label>Новый пароль</label>
+          <input type="password" name="newPassword" value="" />
+          <button>Сменить пароль</button>
+        </div>
+        <div class="col user-skills">
+          <h3>Основная информация о пользователе</h3>
+
+          <p>{{ user.skills }}</p>
+        </div>
+      </div>
+      <div class="current-projects">
+        <h2>Ваши текущие проекты</h2>
+        <h1>Пока что здесь пусто</h1>
+      </div>
+    </div>
+  </div>
+</div>

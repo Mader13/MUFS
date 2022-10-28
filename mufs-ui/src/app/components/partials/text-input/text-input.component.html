@@ -1,5 +1,10 @@
 <input-container [label]="label">
-  <input [type]="type" [placeholder]="label" [formControl]="formControl" />
+  <input
+    [type]="type"
+    [placeholder]="label"
+    [formControl]="formControl"
+    [ngClass]="label"
+  />
 
   <input-validation
     [control]="control"

@@ -1,5 +1,59 @@
 .register {
+  margin-top: 25px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  span {
+    display: inline-block;
+    color: white;
+    font-size: 1.1em;
+  }
+  a {
+    color: white;
+    font-size: 1.1em;
+  }
+}
+
+.container-sm {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+
+  img {
+    height: 250px;
+    width: 250px;
+  }
+  .details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2em;
+    height: 750px;
+    min-width: 800px;
+    margin-bottom: 100px;
+    padding: 50px;
+    background-color: rgba(62, 62, 120, 0.7);
+    border-radius: 8px;
+    .button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    button {
+      width: 240px;
+      height: 60px;
+      background-color: white;
+      border: 8px solid rgba(62, 62, 120, 1);
+      border-radius: 8px;
+      font-size: 1.2em;
+      color: rgba(62, 62, 120, 1);
+      font-weight: bold;
+    }
+  }
+}
+text-input {
+  margin: 20px;
 }

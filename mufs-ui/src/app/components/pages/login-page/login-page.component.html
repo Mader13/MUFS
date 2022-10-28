@@ -1,11 +1,13 @@
 <div class="container-sm">
   <div class="details">
+    <img src="../../../../assets/images/Logo.svg" alt="" />
     <form [formGroup]="loginForm" (ngSubmit)="submit()">
       <text-input
         [control]="fc.email"
         [showErrorsWhen]="isSubmitted"
         type="email"
         label="Email"
+        class="email-input"
       >
       </text-input>
 
@@ -14,10 +16,11 @@
         [showErrorsWhen]="isSubmitted"
         type="password"
         label="Password"
+        class="password-input"
       >
       </text-input>
 
-      <div class="button"><button type="submit">Логин</button></div>
+      <div class="button"><button type="submit">Войти</button></div>
       <div class="register">
         <span>Не зарегистрированы?</span>&nbsp;
         <a routerLink="/register-user" [queryParams]="{ returnUrl: returnUrl }"

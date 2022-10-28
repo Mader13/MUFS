@@ -27,7 +27,7 @@ router.post(
     const { email, password } = req.body;
     const user = await UserModel.findOne({ email });
 
-    if (user || bcrypt.compareSync(password, user!.password)) {
+    if (user && bcrypt.compareSync(password, user!.password)) {
       res.send(generateTokenResponse(user));
     } else {
       const BAD_REQUEST = 400;
@@ -58,7 +58,7 @@ router.post(
       skills,
       userRole: 0, // создается обычный пользователь без админ. прав
       profilePicture: "",
-      idProject: 0,
+      idProject: [0],
     };
 
     const dbUser = await UserModel.create(newUser);

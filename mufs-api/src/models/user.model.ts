@@ -5,7 +5,7 @@ export interface User {
   name: string;
   password: string;
   email: string;
-  idProject: number;
+  idProject: number[];
   profilePicture: "";
   userRole: number;
   skills: string;
@@ -15,7 +15,7 @@ export const UserSchema = new Schema<User>(
   {
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
-    idProject: { type: Number },
+    idProject: { type: [Number] },
     profilePicture: { type: String, required: false },
     userRole: { type: Number, required: true },
     skills: { type: String, required: false },

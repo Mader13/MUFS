@@ -8,9 +8,9 @@ import { Component, Input, OnInit } from '@angular/core';
 export class InputContainerComponent implements OnInit {
   @Input()
   label!: string;
-  @Input()
-  bgColor = 'white';
 
+  @Input()
+  control!: string;
   constructor() {}
 
   ngOnInit(): void {}
