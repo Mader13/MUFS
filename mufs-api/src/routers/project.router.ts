@@ -1,7 +1,8 @@
 import { Router } from "express";
 import { sample_projects } from "../data";
 import asyncHandler from "express-async-handler";
-import { ProjectModel } from "../models/project.model";
+import { Project, ProjectModel } from "../models/project.model";
+import { HTTP_BAD_REQUEST } from "../constants/http_status";
 
 const router = Router();
 
@@ -16,6 +17,31 @@ router.get(
 
     await ProjectModel.create(sample_projects);
     res.send("Seed is done");
+  })
+);
+
+router.post(
+  "/create-project",
+  asyncHandler(async (req, res) => {
+    const { title, description, leader } = req.body;
+    const project = await ProjectModel.findOne({ title });
+    if (project) {
+      res
+        .status(HTTP_BAD_REQUEST)
+        .send("Проект с таким названием уже есть в MUFS");
+      return;
+    }
+
+    const newProject: Project = {
+      id: "",
+      description,
+      title,
+      leader,
+      members: [],
+    };
+
+    const dbProject = await ProjectModel.create(newProject);
+    res.send(dbProject);
   })
 );
 

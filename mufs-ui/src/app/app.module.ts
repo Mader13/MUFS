@@ -19,6 +19,8 @@ import { InputValidationComponent } from './components/partials/input-validation
 import { TextInputComponent } from './components/partials/text-input/text-input.component';
 import { NgxNavbarModule } from 'ngx-bootstrap-navbar';
 import { ProfilePageComponent } from './components/pages/profile-page/profile-page.component';
+import { CreateProjectPageComponent } from './components/pages/create-project-page/create-project-page.component';
+import { BannerComponent } from './components/partials/banner/banner.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +36,8 @@ import { ProfilePageComponent } from './components/pages/profile-page/profile-pa
     InputValidationComponent,
     TextInputComponent,
     ProfilePageComponent,
+    CreateProjectPageComponent,
+    BannerComponent,
   ],
   imports: [
     BrowserModule,

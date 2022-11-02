@@ -1,0 +1,7 @@
+<form [formGroup]="createProjectForm" (ngSubmit)="submitCreation()">
+  <label>Название проекта</label>
+  <input name="title" formControlName="title" type="text" />
+  <label>Опишите свой проект</label>
+  <input name="description" type="text" formControlName="description" />
+  <button>Создать проект</button>
+</form>
