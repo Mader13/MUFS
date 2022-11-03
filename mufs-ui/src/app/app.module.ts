@@ -21,6 +21,7 @@ import { NgxNavbarModule } from 'ngx-bootstrap-navbar';
 import { ProfilePageComponent } from './components/pages/profile-page/profile-page.component';
 import { CreateProjectPageComponent } from './components/pages/create-project-page/create-project-page.component';
 import { BannerComponent } from './components/partials/banner/banner.component';
+import { AboutPageComponent } from './components/pages/about-page/about-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +39,7 @@ import { BannerComponent } from './components/partials/banner/banner.component';
     ProfilePageComponent,
     CreateProjectPageComponent,
     BannerComponent,
+    AboutPageComponent,
   ],
   imports: [
     BrowserModule,

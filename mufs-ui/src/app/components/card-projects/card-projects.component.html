@@ -1,7 +1,13 @@
-<app-not-found
-  [visible]="!projects || !projects.length"
+ <app-not-found
+  [visible]="!projects.length"
   resetLinkText="Сбросить поиск"
 ></app-not-found>
+
+<div *ngIf="!projects.length">
+  <div class="spinner-border m-5 d-flex justify-content-center" role="status">
+      <span class="sr-only"></span>
+    </div>
+</div>
 <div *ngFor="let project of projects" class="container-sm">
   <a routerLink="/projects/{{ project.id }}"
     ><h2>{{ project.title }}</h2></a

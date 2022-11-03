@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class CardProjectsComponent implements OnInit {
   projects: Project[] = [];
-
+  public amountProjects!: number;
   constructor(
     private projectsService: ProjectsService,
     activatedRoute: ActivatedRoute
@@ -25,9 +25,17 @@ export class CardProjectsComponent implements OnInit {
 
       projectsObservable.subscribe((serverProjects) => {
         this.projects = serverProjects;
+        this.amountProjects = this.projects.length
       });
     });
   }
 
-  ngOnInit(): void {}
+
+
+
+
+
+  ngOnInit(): void {
+
+  }
 }

@@ -20,6 +20,15 @@ router.get(
   })
 );
 
+// function getProjectsAmount(){
+//   asyncHandler(async(req, res) => {
+//     const projectsCount = await ProjectModel.countDocuments()
+//     res.send(projectsCount)
+//   })
+  
+// }
+
+
 router.post(
   "/create-project",
   asyncHandler(async (req, res) => {
@@ -49,6 +58,7 @@ router.get(
   "/",
   asyncHandler(async (req, res) => {
     const projects = await ProjectModel.find();
+    const projectsCount = await ProjectModel.countDocuments();
     res.send(projects);
   })
 );

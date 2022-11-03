@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "bootstrap": "^5.2.2",
+    "kill-port": "^2.0.1",
     "npx": "^10.2.2"
   }
 }
