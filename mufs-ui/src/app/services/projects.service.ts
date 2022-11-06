@@ -18,14 +18,7 @@ const PROJECT_KEY = 'Project';
   providedIn: 'root',
 })
 export class ProjectsService {
-  public projectObservable: Observable<Project>;
-  private projectSubject = new BehaviorSubject<Project>(
-    this.getProjectFromLocalStorage()
-  );
-
-  constructor(private http: HttpClient, private toast: ToastrService) {
-    this.projectObservable = this.projectSubject.asObservable();
-  }
+  constructor(private http: HttpClient, private toast: ToastrService) {}
 
   getAll(): Observable<Project[]> {
     return this.http.get<Project[]>(PROJECTS_URL);
@@ -39,13 +32,10 @@ export class ProjectsService {
     return this.http.get<Project>(PROJECTS_BY_ID_URL + idProject);
   }
 
-
-
   create(createProject: IProjectCreate): Observable<Project> {
     return this.http.post<Project>(PROJECTS_CREATE_URL, createProject).pipe(
       tap({
         next: (project: Project) => {
-          this.projectSubject.next(project);
           this.toast.success(`${project.title}`, 'Создан');
         },
         error: (errorResponse) => {

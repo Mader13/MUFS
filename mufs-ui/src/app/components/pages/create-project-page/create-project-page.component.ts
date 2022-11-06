@@ -8,6 +8,7 @@ import {
 import { ProjectsService } from 'src/app/services/projects.service';
 import { UserService } from 'src/app/services/user.service';
 import { IProjectCreate } from 'src/app/shared/interfaces/IProjectCreate';
+import { Project } from 'src/app/shared/models/Project';
 import { User } from 'src/app/shared/models/User';
 @Component({
   selector: 'app-create-project-page',
@@ -16,7 +17,7 @@ import { User } from 'src/app/shared/models/User';
 })
 export class CreateProjectPageComponent implements OnInit {
   user!: User;
-
+  public project: Project;
   createProjectForm: FormGroup = new FormGroup({
     title: new FormControl(Validators.required),
     description: new FormControl(
@@ -34,7 +35,9 @@ export class CreateProjectPageComponent implements OnInit {
     private formBuilder: FormBuilder,
     private userService: UserService,
     private projectsService: ProjectsService
-  ) {}
+  ) {
+    this.project = new Project();
+  }
 
   ngOnInit(): void {
     this.createProjectForm = this.formBuilder.group({
@@ -53,7 +56,9 @@ export class CreateProjectPageComponent implements OnInit {
       description: formValues.description,
       leader: 'empty',
     };
-    this.projectsService.create(project);
+    this.projectsService.create(project).subscribe((res) => {
+      console.log('response is ', res);
+    });
   }
 
   get getID() {
