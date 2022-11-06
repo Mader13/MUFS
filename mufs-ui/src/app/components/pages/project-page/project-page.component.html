@@ -15,7 +15,7 @@
             class="leader-profile-picture image-responsive col-sm-3"
           />
           <div class="col-sm-7 leader-name">
-            <span>Иван Иванов</span><br />
+            <span>s</span><br />
             <span class="leader-sign">Лидер проекта</span>
           </div>
         </div>
@@ -29,9 +29,23 @@
         </div>
       </div>
       <div class="members-count">
-        <span>Уже участвуют в проекте: {{ project.members?.length }}</span>
+        <span>Уже участвуют в проекте: {{ project.members.length }}</span>
       </div>
-      <button class="btn btn-primary">Участвовать</button>
+      <div>
+        <button
+          *ngIf="participateStatus == 3"
+          class="btn btn-primary"
+          (click)="participateInProject()"
+        >
+          Участвовать
+        </button>
+        <button class="btn-non-active" *ngIf="participateStatus == 2">
+          На рассмотрении лидера
+        </button>
+        <button class="btn-non-active" *ngIf="participateStatus == 1">
+          Вы уже в проекте
+        </button>
+      </div>
     </div>
     <div class="col-sm-8 project-info">
       <h1>{{ project.title }}</h1>

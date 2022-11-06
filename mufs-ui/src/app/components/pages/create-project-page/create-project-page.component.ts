@@ -51,17 +51,14 @@ export class CreateProjectPageComponent implements OnInit {
     this.isSubmitted = true;
     if (this.createProjectForm.invalid) return;
     const formValues = this.createProjectForm.value;
+    const userID = JSON.parse(localStorage.User);
     const project: IProjectCreate = {
       title: formValues.title,
       description: formValues.description,
-      leader: 'empty',
+      leader: userID.id,
     };
     this.projectsService.create(project).subscribe((res) => {
       console.log('response is ', res);
     });
-  }
-
-  get getID() {
-    return this.user.id;
   }
 }

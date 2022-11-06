@@ -4,7 +4,8 @@ export interface Project {
   id: string;
   title: string;
   description: string;
-  members: number[];
+  members: string[];
+  pendingMembers: string[];
   leader: string;
 }
 
@@ -12,8 +13,9 @@ export const ProjectSchema = new Schema<Project>(
   {
     title: { type: String, required: true },
     description: { type: String },
-    members: { type: [Number], required: false },
+    members: { type: [String], required: false },
     leader: { type: String, required: true },
+    pendingMembers: { type: [String], required: false },
   },
   {
     toJSON: {

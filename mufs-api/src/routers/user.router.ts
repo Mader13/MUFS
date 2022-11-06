@@ -82,4 +82,12 @@ const generateTokenResponse = (user: any) => {
   return user;
 };
 
+router.get(
+  "/:id",
+  asyncHandler(async (req, res) => {
+    const user = await UserModel.findById(req.params.id);
+    res.send(user);
+  })
+);
+
 export default router;

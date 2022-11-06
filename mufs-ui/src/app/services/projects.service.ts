@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
-import { sample_projects } from 'src/data';
 import {
   PROJECTS_BY_ID_URL,
   PROJECTS_BY_SEARCH_URL,
@@ -11,6 +10,7 @@ import {
 import { Project } from '../shared/models/Project';
 import { IProjectCreate } from '../shared/interfaces/IProjectCreate';
 import { ToastrService } from 'ngx-toastr';
+import { IUserParticipate } from '../shared/interfaces/IUserParticipate';
 
 const PROJECT_KEY = 'Project';
 
@@ -30,6 +30,25 @@ export class ProjectsService {
 
   getProjectById(idProject: number): Observable<Project> {
     return this.http.get<Project>(PROJECTS_BY_ID_URL + idProject);
+  }
+
+  // getProjectsByLeader(leader: string): Observable<Project[]> {
+  //   return this.http.get<Project[]>(PROJECTS_URL, leader);
+  // }
+
+  addNewParticipant(query: IUserParticipate): Observable<Project> {
+    return this.http
+      .put<Project>(PROJECTS_BY_ID_URL + query.idProject, query)
+      .pipe(
+        tap({
+          next: (project: Project) => {
+            this.toast.success('Отправлена заявка на участие в проекте');
+          },
+          error: (errorResponse) => {
+            this.toast.error(errorResponse.error, 'Добавление неудачно.');
+          },
+        })
+      );
   }
 
   create(createProject: IProjectCreate): Observable<Project> {

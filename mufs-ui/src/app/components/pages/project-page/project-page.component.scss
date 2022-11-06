@@ -1,4 +1,5 @@
 .container {
+  margin-top: 50px;
   margin-bottom: 100px;
 }
 
@@ -81,6 +82,10 @@
     font-weight: bold;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   }
+}
+
+.btn-non-active {
+  cursor: default;
 }
 .project-info {
   max-width: 840px;

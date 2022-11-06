@@ -18,6 +18,8 @@ app.use(
     origin: ["http://localhost:4200"],
   })
 );
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.use("/api/projects", projectRouter);
 app.use("/api/users", userRouter);

@@ -3,31 +3,9 @@ import { sample_projects } from "../data";
 import asyncHandler from "express-async-handler";
 import { Project, ProjectModel } from "../models/project.model";
 import { HTTP_BAD_REQUEST } from "../constants/http_status";
+import { appendFile } from "fs";
 
 const router = Router();
-
-router.get(
-  "/seed",
-  asyncHandler(async (req, res) => {
-    const projectsCount = await ProjectModel.countDocuments();
-    if (projectsCount > 0) {
-      res.send("Seed is done already");
-      return;
-    }
-
-    await ProjectModel.create(sample_projects);
-    res.send("Seed is done");
-  })
-);
-
-// function getProjectsAmount(){
-//   asyncHandler(async(req, res) => {
-//     const projectsCount = await ProjectModel.countDocuments()
-//     res.send(projectsCount)
-//   })
-  
-// }
-
 
 router.post(
   "/create-project",
@@ -47,12 +25,36 @@ router.post(
       title,
       leader,
       members: [],
+      pendingMembers: [],
     };
 
     const dbProject = await ProjectModel.create(newProject);
     res.send(dbProject);
   })
 );
+
+router.put("/:id", async (req, res) => {
+  const { idUser } = req.body;
+  // const project = await ProjectModel.findOneAndUpdate(
+  //   {
+  //     id: req.params.id,
+  //   },
+  //   {
+  //     $addToSet: {
+  //       pendingMembers: idUser,
+  //     },
+  //   },
+  //   { returnNewDocument: true }
+  // );
+
+  const project = await ProjectModel.updateOne(
+    { _id: req.params.id },
+    { $addToSet: { pendingMembers: idUser } },
+    { returnNewDocument: true }
+  );
+
+  res.send(project);
+});
 
 router.get(
   "/",

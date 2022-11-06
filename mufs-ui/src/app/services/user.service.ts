@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { IUserLogin } from '../shared/interfaces/IUserLogin';
 import {
+  USER_BY_ID_URL,
   USER_LOGIN_URL,
   USER_REGISTER_URL,
 } from '../shared/models/constants/urls';
@@ -87,5 +88,9 @@ export class UserService {
     const userJson = localStorage.getItem(USER_KEY);
     if (userJson) return JSON.parse(userJson) as User;
     return new User();
+  }
+
+  getUserByID(idUser: string): Observable<User> {
+    return this.http.get<User>(USER_BY_ID_URL + idUser);
   }
 }
