@@ -55,7 +55,7 @@ export class RegisterUserPageComponent implements OnInit {
       skills: formValues.skills,
       userRole: 0,
       profilePicture: '',
-      idProject: 0,
+      idProject: [],
     };
 
     this.UserService.register(user).subscribe((_) => {

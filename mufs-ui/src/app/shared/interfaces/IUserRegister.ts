@@ -6,5 +6,5 @@ export interface IUserRegister {
   skills: string;
   userRole: number;
   profilePicture: string;
-  idProject: number;
+  idProject: string[];
 }

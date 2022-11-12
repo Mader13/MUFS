@@ -32,7 +32,13 @@
           НАЧАТЬ СВОЙ ПРОЕКТ
         </button>
         <h2>Ваши текущие проекты</h2>
-        <h1>Пока что здесь пусто</h1>
+        <h1 *ngIf="user.idProject.length == 0">Пока что здесь пусто</h1>
+        <div class="user-projects" *ngFor="let p of this.projects">
+          <a routerLink="/projects/{{ p.id }}"
+            ><h4>{{ p.title }}</h4></a
+          >
+          <span *ngIf="user.id == p.leader.toString()">вы лидер</span>
+        </div>
       </div>
     </div>
   </div>

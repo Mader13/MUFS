@@ -2,7 +2,7 @@ export class User {
   name!: string;
   password!: string;
   email!: string;
-  idProject?: number;
+  idProject!: string[];
   profilePicture?: '';
   userRole!: number;
   skills?: string;

@@ -21,6 +21,36 @@ router.get(
   })
 );
 
+// router.put(
+//   "/:id",
+//   asyncHandler(async (req, res) => {
+//     const { idProject } = req.body;
+//     console.log(req.body, "Тело реквеста");
+//     console.log(req.params.id, "Айди юзера в роутере");
+//     const user = await UserModel.updateOne(
+//       { _id: req.params.id },
+//       { $addToSet: { idProject: idProject } },
+//       { returnNewDocument: true }
+//     );
+//     res.send(user);
+//   })
+// );
+
+router.put(
+  "/:id",
+  asyncHandler(async (req, res) => {
+    const { idP } = req.body;
+    console.log(idP, "Добавляю этот проект");
+    const user = await UserModel.updateOne(
+      { _id: req.params.id },
+      { $addToSet: { idProject: idP } },
+      { returnNewDocument: true }
+    );
+    console.log(user);
+    res.send(user);
+  })
+);
+
 router.post(
   "/login",
   asyncHandler(async (req, res) => {
@@ -58,7 +88,7 @@ router.post(
       skills,
       userRole: 0, // создается обычный пользователь без админ. прав
       profilePicture: "",
-      idProject: [0],
+      idProject: [],
     };
 
     const dbUser = await UserModel.create(newUser);

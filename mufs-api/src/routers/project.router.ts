@@ -1,4 +1,4 @@
-import { Router } from "express";
+import e, { Router } from "express";
 import { sample_projects } from "../data";
 import asyncHandler from "express-async-handler";
 import { Project, ProjectModel } from "../models/project.model";
@@ -24,7 +24,7 @@ router.post(
       description,
       title,
       leader,
-      members: [],
+      members: [leader],
       pendingMembers: [],
     };
 
@@ -33,20 +33,16 @@ router.post(
   })
 );
 
-router.put("/:id", async (req, res) => {
-  const { idUser } = req.body;
-  // const project = await ProjectModel.findOneAndUpdate(
-  //   {
-  //     id: req.params.id,
-  //   },
-  //   {
-  //     $addToSet: {
-  //       pendingMembers: idUser,
-  //     },
-  //   },
-  //   { returnNewDocument: true }
-  // );
+router.get(
+  "/:id/userSearch",
+  asyncHandler(async (req, res) => {
+    const project = await ProjectModel.findById(req.params.id);
+    res.send(project);
+  })
+);
 
+router.put("/:id/add", async (req, res) => {
+  const { idUser } = req.body;
   const project = await ProjectModel.updateOne(
     { _id: req.params.id },
     { $addToSet: { pendingMembers: idUser } },
@@ -55,6 +51,39 @@ router.put("/:id", async (req, res) => {
 
   res.send(project);
 });
+
+router.put(
+  "/:id/decide",
+  asyncHandler(async (req, res) => {
+    const { idUser, decision } = req.body;
+    switch (decision) {
+      case true: {
+        const project = await ProjectModel.updateOne(
+          { _id: req.params.id },
+          { $addToSet: { members: idUser } },
+          { $pull: { pendingMembers: idUser } }
+        );
+        console.log(project);
+
+        res.send(project);
+        break;
+      }
+      case false: {
+        const project = await ProjectModel.updateOne(
+          { _id: req.params.id },
+          { $pull: { pendingMembers: idUser } },
+          { returnNewDocument: true }
+        );
+
+        res.send(project);
+        break;
+      }
+      default: {
+        break;
+      }
+    }
+  })
+);
 
 router.get(
   "/",

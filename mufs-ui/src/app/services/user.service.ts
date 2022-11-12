@@ -72,12 +72,46 @@ export class UserService {
     );
   }
 
+  refreshUserInfo(idUser: string): Observable<User> {
+    return this.http.get<User>(USER_BY_ID_URL + idUser).pipe(
+      tap({
+        next: (user) => {
+          this.setUserToLocalStorage(user);
+          this.userSubject.next(user);
+          this.userObservable = this.userSubject.asObservable();
+        },
+        error: (errorResponse) => {
+          this.toastrService.error(
+            errorResponse.error,
+            'Ошибка обновления информации'
+          );
+        },
+      })
+    );
+  }
+
   changePassword() {}
 
   logout() {
     this.userSubject.next(new User());
     localStorage.removeItem(USER_KEY);
     this.router.navigateByUrl('/');
+  }
+
+  addUserToProject(idUser: string, idP: string): Observable<User> {
+    let idPjsonStr = `{ "idP": "${idP}" }`;
+    let idPjson = JSON.parse(idPjsonStr);
+
+    return this.http.put<User>(USER_BY_ID_URL + idUser, idPjson).pipe(
+      tap({
+        next: (User) => {
+          console.log(idPjson, 'Проекты пользователя');
+        },
+        error: (errorResponse) => {
+          console.log(errorResponse);
+        },
+      })
+    );
   }
 
   private setUserToLocalStorage(user: User) {
@@ -91,6 +125,13 @@ export class UserService {
   }
 
   getUserByID(idUser: string): Observable<User> {
-    return this.http.get<User>(USER_BY_ID_URL + idUser);
+    return this.http.get<User>(USER_BY_ID_URL + idUser).pipe(
+      tap({
+        next: (user) => {},
+        error: (errorResponse) => {
+          console.log(errorResponse);
+        },
+      })
+    );
   }
 }

@@ -5,6 +5,8 @@ import { Project } from 'src/app/shared/models/Project';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/shared/models/User';
 import { IUserParticipate } from 'src/app/shared/interfaces/IUserParticipate';
+import { IUserAddToProjectDecision } from 'src/app/shared/interfaces/IUserAddToProjectDecision';
+import { resolve } from 'path';
 @Component({
   selector: 'app-project-page',
   templateUrl: './project-page.component.html',
@@ -12,13 +14,16 @@ import { IUserParticipate } from 'src/app/shared/interfaces/IUserParticipate';
 })
 export class ProjectPageComponent implements OnInit {
   project!: Project;
-  user!: User;
+  user?: User;
+  userProject?: User;
   members!: string[];
   pendingMembers!: string[];
+  public pMember: Array<User> = [];
   idLeader!: string;
   currentProject!: string;
   participateStatus!: number;
-  //leaderName: string;
+  leaderName!: string;
+  userInfo!: User;
   constructor(
     activatedRoute: ActivatedRoute,
     private projectsService: ProjectsService,
@@ -33,10 +38,12 @@ export class ProjectPageComponent implements OnInit {
           this.idLeader = this.project.leader.toString();
           this.currentProject = this.project.id.toString();
           this.checkUserParticipation();
+          this.getLeaderInfo();
+          let member = new Array<User>();
+          let testArray = new Array<User>();
+          this.getPendingMembersInfo(this.pendingMembers);
         });
     });
-    console.log('Участие ' + this.participateStatus);
-    //this.leaderName = this.getLeaderName();
   }
 
   participateInProject() {
@@ -51,8 +58,8 @@ export class ProjectPageComponent implements OnInit {
   }
 
   async checkUserParticipation() {
-    const userInfo = await JSON.parse(localStorage.User);
-    const id = userInfo.id;
+    this.userInfo = await JSON.parse(localStorage.User);
+    const id = this.userInfo.id;
 
     if (this.project.members.includes(id)) {
       this.participateStatus = 1;
@@ -66,17 +73,46 @@ export class ProjectPageComponent implements OnInit {
     return this.participateStatus;
   }
 
-  getLeaderName() {
-    try {
-      const leaderName = this.userService
-        .getUserByID(this.idLeader)
-        .subscribe((user) => (this.user.name = user.name));
-      return leaderName;
-    } catch (error) {
-      console.log(error);
-      return undefined;
-    }
+  getLeaderInfo() {
+    this.userService.getUserByID(this.idLeader).subscribe((serverUser) => {
+      this.userProject = serverUser;
+    });
   }
 
-  ngOnInit(): void {}
+  getPendingMembersInfo(pMemberIDs: string[]) {
+    for (let pMemberID of pMemberIDs) {
+      this.userService.getUserByID(pMemberID).subscribe((serverUser) => {
+        this.pMember.push(serverUser);
+      });
+    }
+    console.log('Тут пользователи', this.pMember);
+  }
+
+  async makeDecisionOnAddingToProject(
+    pMemberID: string,
+    decision: boolean,
+    idProject: string
+  ) {
+    const query: IUserAddToProjectDecision = {
+      idUser: pMemberID,
+      idProject: idProject,
+      decision: decision,
+    };
+    this.pMember.forEach((pm, index) => {
+      if (pm.id == pMemberID) {
+        this.pMember.splice(index, 1);
+      }
+    });
+    this.projectsService.decideAddingNewMember(query).subscribe((_) => {});
+    this.userService
+      .addUserToProject(pMemberID, idProject)
+      .subscribe((user) => {
+        console.log(user, 'результат');
+      });
+  }
+
+  ngOnInit(): void {
+    // this.user = JSON.parse(localStorage.User);
+    // console.log(this.user);
+  }
 }

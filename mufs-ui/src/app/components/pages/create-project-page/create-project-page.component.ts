@@ -17,6 +17,7 @@ import { User } from 'src/app/shared/models/User';
 })
 export class CreateProjectPageComponent implements OnInit {
   user!: User;
+  Project!: Project;
   public project: Project;
   createProjectForm: FormGroup = new FormGroup({
     title: new FormControl(Validators.required),
@@ -47,7 +48,6 @@ export class CreateProjectPageComponent implements OnInit {
   }
 
   submitCreation() {
-    console.log('SubmitCreation');
     this.isSubmitted = true;
     if (this.createProjectForm.invalid) return;
     const formValues = this.createProjectForm.value;
@@ -58,7 +58,11 @@ export class CreateProjectPageComponent implements OnInit {
       leader: userID.id,
     };
     this.projectsService.create(project).subscribe((res) => {
-      console.log('response is ', res);
+      this.Project = res;
+
+      this.userService
+        .addUserToProject(userID.id, this.Project.id.toString())
+        .subscribe((_) => {});
     });
   }
 }

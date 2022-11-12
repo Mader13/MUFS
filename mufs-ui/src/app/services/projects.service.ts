@@ -11,6 +11,8 @@ import { Project } from '../shared/models/Project';
 import { IProjectCreate } from '../shared/interfaces/IProjectCreate';
 import { ToastrService } from 'ngx-toastr';
 import { IUserParticipate } from '../shared/interfaces/IUserParticipate';
+import { IUserAddToProjectDecision } from '../shared/interfaces/IUserAddToProjectDecision';
+import { IUserProjects } from '../shared/interfaces/IUserProjects';
 
 const PROJECT_KEY = 'Project';
 
@@ -32,17 +34,46 @@ export class ProjectsService {
     return this.http.get<Project>(PROJECTS_BY_ID_URL + idProject);
   }
 
-  // getProjectsByLeader(leader: string): Observable<Project[]> {
-  //   return this.http.get<Project[]>(PROJECTS_URL, leader);
+  getProjectsByIdUser(idProject: string): Observable<Project> {
+    return this.http.get<Project>(
+      PROJECTS_BY_ID_URL + idProject + '/userSearch'
+    );
+  }
+
+  // getUserProjects(idProjects: string[]): Observable<Project[]> {
+  //   return this.http.get<Project[]>(PROJECTS_URL + '/userSearch', idProjects)
   // }
 
   addNewParticipant(query: IUserParticipate): Observable<Project> {
     return this.http
-      .put<Project>(PROJECTS_BY_ID_URL + query.idProject, query)
+      .put<Project>(PROJECTS_BY_ID_URL + query.idProject + '/add', query)
       .pipe(
         tap({
           next: (project: Project) => {
             this.toast.success('Отправлена заявка на участие в проекте');
+          },
+          error: (errorResponse) => {
+            this.toast.error(errorResponse.error, 'Добавление неудачно.');
+          },
+        })
+      );
+  }
+
+  decideAddingNewMember(query: IUserAddToProjectDecision): Observable<Project> {
+    return this.http
+      .put<Project>(PROJECTS_BY_ID_URL + query.idProject + '/decide', query)
+      .pipe(
+        tap({
+          next: (project: Project) => {
+            if (query.decision) {
+              this.toast.success(
+                'Заявка рассмотрена. Пользователь добавлен в проект'
+              );
+            } else {
+              this.toast.info(
+                'Заявка рассмотрена. Пользователю отказано в участии'
+              );
+            }
           },
           error: (errorResponse) => {
             this.toast.error(errorResponse.error, 'Добавление неудачно.');
