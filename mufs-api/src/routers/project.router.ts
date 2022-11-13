@@ -56,17 +56,18 @@ router.put(
   "/:id/decide",
   asyncHandler(async (req, res) => {
     const { idUser, decision } = req.body;
+    console.log(idUser, "idUser");
+    console.log(decision, "decision");
     switch (decision) {
       case true: {
-        // await ProjectModel.updateOne(
-        //   { _id: req.params.id },
-        //   { $addToSet: { members: idUser } },
-        //   { $pull: { pendingMembers: idUser } }
-        // );
+        await ProjectModel.updateOne(
+          { _id: req.params.id },
+          { $pull: { pendingMembers: idUser } }
+        );
         const project = await ProjectModel.updateOne(
           { _id: req.params.id },
-          { $pull: { pendingMembers: idUser } },
-          { $addToSet: { members: idUser } }
+          { $addToSet: { members: idUser } },
+          { returnNewDocument: true }
         );
         console.log(project);
         res.send(project);

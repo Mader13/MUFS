@@ -95,16 +95,8 @@
     </div>
   </div>
 
-  <h2
-    *ngIf="project.leader.toString() == this.userInfo.id"
-    class="application-title"
-  >
-    Участники проекта
-  </h2>
-  <div
-    class="project-members"
-    *ngIf="project.leader.toString() == this.userInfo.id"
-  >
+  <h2 class="application-title">Участники проекта</h2>
+  <div class="project-members">
     <div class="pMember container-sm" *ngFor="let member of projMember">
       <div class="member-info">
         <img

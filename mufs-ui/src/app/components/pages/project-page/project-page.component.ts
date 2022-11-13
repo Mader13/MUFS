@@ -83,7 +83,6 @@ export class ProjectPageComponent implements OnInit {
     for (let pMemberID of pMemberIDs) {
       this.userService.getUserByID(pMemberID).subscribe((serverUser) => {
         this.pMember.push(serverUser);
-        console.log('Тут пользователи', this.pMember);
       });
     }
   }
@@ -91,7 +90,6 @@ export class ProjectPageComponent implements OnInit {
     for (let memberID of membersID) {
       this.userService.getUserByID(memberID).subscribe((serverUser) => {
         this.projMember.push(serverUser);
-        console.log('Тут пользователи', this.pMember);
       });
     }
   }
@@ -105,7 +103,7 @@ export class ProjectPageComponent implements OnInit {
       idProject: idProject,
       decision: decision,
     };
-
+    console.log(query, 'Запрос внутри makeDecision');
     this.pMember.forEach((pm, index) => {
       if (pm.id == pMemberID) {
         this.pMember.splice(index, 1);
@@ -117,7 +115,7 @@ export class ProjectPageComponent implements OnInit {
       this.userService
         .addUserToProject(pMemberID, idProject)
         .subscribe((user) => {
-          console.log(user, 'результат');
+          console.log(user, 'результат выполнения');
         });
     } else {
       this.projectsService.decideAddingNewMember(query).subscribe((_) => {});
