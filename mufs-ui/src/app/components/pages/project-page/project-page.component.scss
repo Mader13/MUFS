@@ -200,6 +200,11 @@
   p {
     padding: 10px auto;
     margin-bottom: 2em;
+    text-overflow: ellipsis "[...]";
+    overflow: auto;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    height: 260px;
   }
   .decide-btns {
     display: flex;

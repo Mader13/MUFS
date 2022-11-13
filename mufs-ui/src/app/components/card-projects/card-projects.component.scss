@@ -44,3 +44,17 @@
   &:hover {
   }
 }
+
+.sr-only {
+  width: 250px;
+  height: 250px;
+}
+
+app-not-found {
+  display: flex;
+  width: 100%;
+  height: 90vh;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+}

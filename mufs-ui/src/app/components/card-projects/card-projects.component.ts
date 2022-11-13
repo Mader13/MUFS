@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 export class CardProjectsComponent implements OnInit {
   projects: Project[] = [];
   public amountProjects!: number;
+  public isThereProjects!: boolean;
   constructor(
     private projectsService: ProjectsService,
     activatedRoute: ActivatedRoute
@@ -25,17 +26,18 @@ export class CardProjectsComponent implements OnInit {
 
       projectsObservable.subscribe((serverProjects) => {
         this.projects = serverProjects;
-        this.amountProjects = this.projects.length
+        this.amountProjects = this.projects.length;
+        console.log(this.amountProjects);
+        if (this.amountProjects != 0) {
+          this.isThereProjects = true;
+        } else {
+          this.isThereProjects = false;
+        }
       });
     });
   }
 
-
-
-
-
-
   ngOnInit(): void {
-
+    console.log(this.projects.length);
   }
 }
