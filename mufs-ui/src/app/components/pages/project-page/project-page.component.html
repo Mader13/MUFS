@@ -30,7 +30,9 @@
       <div class="members-count">
         <span>Уже участвуют в проекте: {{ project.members.length }}</span>
       </div>
-      <div *ngIf="!(project.leader.toString() == this.user?.id)">
+      <div
+        *ngIf="!(project.leader.toString() == this.user?.id) || !this.user?.id"
+      >
         <button
           *ngIf="participateStatus == 3"
           class="btn btn-primary"
@@ -53,7 +55,12 @@
       </p>
     </div>
   </div>
-  <h2 class="application-title">Отклики на проект</h2>
+  <h2
+    *ngIf="project.leader.toString() == this.userInfo.id"
+    class="application-title"
+  >
+    Отклики на проект
+  </h2>
   <div
     class="pending-members"
     *ngIf="project.leader.toString() == this.userInfo.id"

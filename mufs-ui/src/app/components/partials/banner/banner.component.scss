@@ -1,7 +1,8 @@
 .container-fluid {
   display: flex;
   flex-direction: column;
-  background-image: url(../../../../assets/images/main-page-banner.png);
+  background-image: url(../../../../assets/images/main-page-banner.webp);
+
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -11,7 +12,6 @@
   span {
     color: white;
     font-weight: bold;
-
   }
   margin-bottom: 50px;
   border-bottom-left-radius: 8px;
@@ -20,6 +20,5 @@
     cursor: pointer;
     color: white;
     font-weight: bold;
-
   }
 }
