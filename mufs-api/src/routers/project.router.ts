@@ -58,13 +58,17 @@ router.put(
     const { idUser, decision } = req.body;
     switch (decision) {
       case true: {
+        // await ProjectModel.updateOne(
+        //   { _id: req.params.id },
+        //   { $addToSet: { members: idUser } },
+        //   { $pull: { pendingMembers: idUser } }
+        // );
         const project = await ProjectModel.updateOne(
           { _id: req.params.id },
-          { $addToSet: { members: idUser } },
-          { $pull: { pendingMembers: idUser } }
+          { $pull: { pendingMembers: idUser } },
+          { $addToSet: { members: idUser } }
         );
         console.log(project);
-
         res.send(project);
         break;
       }

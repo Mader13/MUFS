@@ -1,16 +1,28 @@
 <div class="container">
-  <div class="display-3">Создай свой проект</div>
+  <div class="display-6">Создание нового проекта</div>
+  <span class="attention">Обязательно заполнение всех полей о проекте</span>
+
   <div class="form-create">
+    <span class="info-title">Информация о проекте</span>
     <form [formGroup]="createProjectForm" (ngSubmit)="submitCreation()">
       <div class="title">
-        <label>Название проекта</label>
-        <input name="title" formControlName="title" type="text" />
+        <label>Полное наименование проекта</label>
+        <input
+          name="title"
+          formControlName="title"
+          type="text"
+          placeholder="Мин. длина 3 символа"
+        />
       </div>
       <div class="description">
-        <label>Опишите свой проект</label>
-        <textarea name="description" formControlName="description"></textarea>
+        <label>Описание проекта</label>
+        <textarea
+          name="description"
+          formControlName="description"
+          placeholder="Мин. длина 50 символов"
+        ></textarea>
       </div>
-      <button>Создать проект</button>
+      <button>Создать новый проект</button>
     </form>
   </div>
 </div>

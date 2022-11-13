@@ -33,11 +33,16 @@
         </button>
         <h2>Ваши текущие проекты</h2>
         <h1 *ngIf="user.idProject.length == 0">Пока что здесь пусто</h1>
-        <div class="user-projects" *ngFor="let p of this.projects">
-          <a routerLink="/projects/{{ p.id }}"
-            ><h4>{{ p.title }}</h4></a
-          >
-          <span *ngIf="user.id == p.leader.toString()">вы лидер</span>
+        <div class="user-projects">
+          <div class="user-project" *ngFor="let p of this.projects">
+            <a routerLink="/projects/{{ p.id }}"
+              ><h3>{{ p.title }}</h3></a
+            >
+            <span>Количество участников: {{ p.members.length }}</span>
+            <span class="leader-status" *ngIf="user.id == p.leader.toString()"
+              >Лидер</span
+            >
+          </div>
         </div>
       </div>
     </div>

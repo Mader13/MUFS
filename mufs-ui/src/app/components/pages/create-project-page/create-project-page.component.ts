@@ -5,9 +5,11 @@ import {
   Validators,
   FormBuilder,
 } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectsService } from 'src/app/services/projects.service';
 import { UserService } from 'src/app/services/user.service';
 import { IProjectCreate } from 'src/app/shared/interfaces/IProjectCreate';
+import { PROJECTS_BY_ID_URL } from 'src/app/shared/models/constants/urls';
 import { Project } from 'src/app/shared/models/Project';
 import { User } from 'src/app/shared/models/User';
 @Component({
@@ -21,10 +23,7 @@ export class CreateProjectPageComponent implements OnInit {
   public project: Project;
   createProjectForm: FormGroup = new FormGroup({
     title: new FormControl(Validators.required),
-    description: new FormControl(
-      Validators.required,
-      Validators.minLength(100)
-    ),
+    description: new FormControl(Validators.required, Validators.minLength(50)),
   });
   isSubmitted = false;
 
@@ -35,7 +34,9 @@ export class CreateProjectPageComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
-    private projectsService: ProjectsService
+    private projectsService: ProjectsService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {
     this.project = new Project();
   }
@@ -43,7 +44,7 @@ export class CreateProjectPageComponent implements OnInit {
   ngOnInit(): void {
     this.createProjectForm = this.formBuilder.group({
       title: ['', [Validators.required, Validators.minLength(3)]],
-      description: ['', [Validators.required, Validators.minLength(100)]],
+      description: ['', [Validators.required, Validators.minLength(50)]],
     });
   }
 
@@ -63,6 +64,8 @@ export class CreateProjectPageComponent implements OnInit {
       this.userService
         .addUserToProject(userID.id, this.Project.id.toString())
         .subscribe((_) => {});
+
+      this.router.navigateByUrl(`/projects/${this.Project.id}`);
     });
   }
 }

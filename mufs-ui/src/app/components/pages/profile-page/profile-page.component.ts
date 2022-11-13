@@ -21,14 +21,11 @@ export class ProfilePageComponent implements OnInit {
     userService.userObservable.subscribe((newUser) => {
       this.user = newUser;
     });
-
-    console.log(this.projects, 'Проекты для вывода');
   }
 
   async refreshUser() {
     this.userService.refreshUserInfo(this.user.id).subscribe((freshUser) => {
       this.user = freshUser;
-      console.log(this.user, 'Обновленные данные');
       this.getUserProjects();
     });
   }
@@ -37,7 +34,6 @@ export class ProfilePageComponent implements OnInit {
       this.projectsService
         .getProjectsByIdUser(project)
         .subscribe((serverProject) => {
-          console.log(serverProject, 'Добавил этот проект в список');
           this.projects.push(serverProject);
         });
     });

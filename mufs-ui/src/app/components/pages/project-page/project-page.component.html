@@ -5,8 +5,8 @@
 ></app-not-found>
 
 <div *ngIf="project.id" class="container">
-  <div class="row justify-content-between flex-wrap">
-    <div class="col-sm-3 leader-and-members">
+  <div class="row">
+    <div class="leader-and-members">
       <div class="leader-info">
         <div class="leader-profile">
           <img
@@ -17,7 +17,7 @@
           <div class="col-sm-7 leader-name">
             <span>{{ this.userProject?.name }}</span
             ><br />
-            <span class="leader-sign">Лидер проекта</span>
+            <span class="leader-sign">{{ this.userProject?.email }}</span>
           </div>
         </div>
         <div class="about-leader">
@@ -46,31 +46,45 @@
         </button>
       </div>
     </div>
-    <div class="col-sm-8 project-info">
+    <div class="project-info">
       <h1>{{ project.title }}</h1>
       <p>
         {{ project.description }}
       </p>
     </div>
   </div>
+  <h2 class="application-title">Отклики на проект</h2>
   <div
     class="pending-members"
     *ngIf="project.leader.toString() == this.userInfo.id"
   >
-    Следующие ожидаемые пользователи
-
-    <div class="pMember" *ngFor="let member of pMember">
-      <span>{{ member.name }}</span>
-      <button
-        (click)="makeDecisionOnAddingToProject(member.id, true, project.id)"
-      >
-        Принять
-      </button>
-      <button
-        (click)="makeDecisionOnAddingToProject(member.id, false, project.id)"
-      >
-        Отклонить
-      </button>
+    <div class="pMember container-sm" *ngFor="let member of pMember">
+      <div class="member-info">
+        <img
+          src="../../../../assets/images/User-profile-picture.png"
+          alt="Фото профиля"
+        />
+        <div class="member-name">
+          <span class="m-name">{{ member.name }}</span>
+          <span class="pending">Откликнулся</span>
+        </div>
+      </div>
+      <span class="about-member-title">О себе</span>
+      <p>{{ member.skills }}</p>
+      <div class="decide-btns">
+        <button
+          class="btn-accept"
+          (click)="makeDecisionOnAddingToProject(member.id, true, project.id)"
+        >
+          Принять
+        </button>
+        <button
+          class="btn-decline"
+          (click)="makeDecisionOnAddingToProject(member.id, false, project.id)"
+        >
+          Отклонить
+        </button>
+      </div>
     </div>
   </div>
 </div>

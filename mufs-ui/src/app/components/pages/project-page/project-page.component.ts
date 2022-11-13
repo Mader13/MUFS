@@ -39,9 +39,7 @@ export class ProjectPageComponent implements OnInit {
           this.currentProject = this.project.id.toString();
           this.checkUserParticipation();
           this.getLeaderInfo();
-          let member = new Array<User>();
-          let testArray = new Array<User>();
-          this.getPendingMembersInfo(this.pendingMembers);
+          this.getPendingMembersInfo(this.project.pendingMembers);
         });
     });
   }
@@ -83,9 +81,9 @@ export class ProjectPageComponent implements OnInit {
     for (let pMemberID of pMemberIDs) {
       this.userService.getUserByID(pMemberID).subscribe((serverUser) => {
         this.pMember.push(serverUser);
+        console.log('Тут пользователи', this.pMember);
       });
     }
-    console.log('Тут пользователи', this.pMember);
   }
 
   async makeDecisionOnAddingToProject(
@@ -98,21 +96,24 @@ export class ProjectPageComponent implements OnInit {
       idProject: idProject,
       decision: decision,
     };
+
     this.pMember.forEach((pm, index) => {
       if (pm.id == pMemberID) {
         this.pMember.splice(index, 1);
       }
     });
-    this.projectsService.decideAddingNewMember(query).subscribe((_) => {});
-    this.userService
-      .addUserToProject(pMemberID, idProject)
-      .subscribe((user) => {
-        console.log(user, 'результат');
-      });
+    if (decision) {
+      this.project.members.push(pMemberID);
+      this.projectsService.decideAddingNewMember(query).subscribe((_) => {});
+      this.userService
+        .addUserToProject(pMemberID, idProject)
+        .subscribe((user) => {
+          console.log(user, 'результат');
+        });
+    } else {
+      this.projectsService.decideAddingNewMember(query).subscribe((_) => {});
+    }
   }
 
-  ngOnInit(): void {
-    // this.user = JSON.parse(localStorage.User);
-    // console.log(this.user);
-  }
+  ngOnInit(): void {}
 }
