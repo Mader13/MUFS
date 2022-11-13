@@ -145,7 +145,8 @@
   margin: 50px;
   font-weight: bold;
 }
-.pending-members {
+.pending-members,
+.project-members {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -187,7 +188,8 @@
       .m-name {
         font-weight: bold;
       }
-      .pending {
+      .pending,
+      .member {
         color: rgba(62, 62, 120, 1);
       }
     }

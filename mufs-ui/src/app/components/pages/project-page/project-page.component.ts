@@ -19,6 +19,7 @@ export class ProjectPageComponent implements OnInit {
   members!: string[];
   pendingMembers!: string[];
   public pMember: Array<User> = [];
+  public projMember: Array<User> = [];
   idLeader!: string;
   currentProject!: string;
   participateStatus!: number;
@@ -40,6 +41,7 @@ export class ProjectPageComponent implements OnInit {
           this.checkUserParticipation();
           this.getLeaderInfo();
           this.getPendingMembersInfo(this.project.pendingMembers);
+          this.getMembersInfo(this.members);
         });
     });
   }
@@ -85,7 +87,14 @@ export class ProjectPageComponent implements OnInit {
       });
     }
   }
-
+  getMembersInfo(membersID: string[]) {
+    for (let memberID of membersID) {
+      this.userService.getUserByID(memberID).subscribe((serverUser) => {
+        this.projMember.push(serverUser);
+        console.log('Тут пользователи', this.pMember);
+      });
+    }
+  }
   async makeDecisionOnAddingToProject(
     pMemberID: string,
     decision: boolean,
