@@ -1,4 +1,7 @@
-<div *ngIf="visible">
-  {{ notFoundMessage }}
-  <a [routerLink]="resetLinkRoute">{{ resetLinkText }}</a>
+<div class="app-not-found" *ngIf="visible">
+  <div>
+    {{ notFoundMessage }}
+    <a [routerLink]="resetLinkRoute">{{ resetLinkText }}</a>
+  </div>
+  <img width="300px" src="../../../assets/images/loading.gif" alt="" />
 </div>
