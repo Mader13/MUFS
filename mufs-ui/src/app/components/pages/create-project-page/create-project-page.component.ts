@@ -24,6 +24,7 @@ export class CreateProjectPageComponent implements OnInit {
   createProjectForm: FormGroup = new FormGroup({
     title: new FormControl(Validators.required),
     description: new FormControl(Validators.required, Validators.minLength(50)),
+    faculty: new FormControl(Validators.required),
   });
   isSubmitted = false;
 
@@ -45,6 +46,7 @@ export class CreateProjectPageComponent implements OnInit {
     this.createProjectForm = this.formBuilder.group({
       title: ['', [Validators.required, Validators.minLength(3)]],
       description: ['', [Validators.required, Validators.minLength(50)]],
+      faculty: ['', [Validators.required]],
     });
   }
 
@@ -56,6 +58,7 @@ export class CreateProjectPageComponent implements OnInit {
     const project: IProjectCreate = {
       title: formValues.title,
       description: formValues.description,
+      faculty: formValues.faculty,
       leader: userID.id,
     };
     this.projectsService.create(project).subscribe((res) => {

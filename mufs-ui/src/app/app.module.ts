@@ -22,6 +22,7 @@ import { ProfilePageComponent } from './components/pages/profile-page/profile-pa
 import { CreateProjectPageComponent } from './components/pages/create-project-page/create-project-page.component';
 import { BannerComponent } from './components/partials/banner/banner.component';
 import { AboutPageComponent } from './components/pages/about-page/about-page.component';
+import { FacultiesComponent } from './components/pages/faculties/faculties.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +41,7 @@ import { AboutPageComponent } from './components/pages/about-page/about-page.com
     CreateProjectPageComponent,
     BannerComponent,
     AboutPageComponent,
+    FacultiesComponent,
   ],
   imports: [
     BrowserModule,

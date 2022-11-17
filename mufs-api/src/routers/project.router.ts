@@ -10,7 +10,7 @@ const router = Router();
 router.post(
   "/create-project",
   asyncHandler(async (req, res) => {
-    const { title, description, leader } = req.body;
+    const { title, description, leader, faculty } = req.body;
     const project = await ProjectModel.findOne({ title });
     if (project) {
       res
@@ -26,6 +26,7 @@ router.post(
       leader,
       members: [],
       pendingMembers: [],
+      faculty,
     };
 
     const dbProject = await ProjectModel.create(newProject);
@@ -40,7 +41,17 @@ router.get(
     res.send(project);
   })
 );
+router.get(
+  "/faculty/:faculty",
+  asyncHandler(async (req, res) => {
+    const { faculty } = req.body;
 
+    const projects = await ProjectModel.find({
+      faculty: faculty,
+    });
+    res.send(projects);
+  })
+);
 router.put("/:id/add", async (req, res) => {
   const { idUser } = req.body;
   const project = await ProjectModel.updateOne(
