@@ -1,6 +1,6 @@
 <app-not-found
   [visible]="!project"
-  notFoundMessage="Проект не найден"
+  notFoundMessage="Занятие не найдено"
   resetLinkText="Вернуться на главную страницу"
 ></app-not-found>
 
@@ -21,14 +21,14 @@
           </div>
         </div>
         <div class="about-leader">
-          <h3>О лидере</h3>
+          <h3>Проводит занятие</h3>
           <p>
             {{ this.userProject?.skills }}
           </p>
         </div>
       </div>
       <div class="members-count">
-        <span>Уже участвуют в проекте: {{ project.members.length }}</span>
+        <span>На занятие записалось: {{ project.members.length }}</span>
       </div>
       <div
         *ngIf="!(project.leader.toString() == this.user?.id) || !this.user?.id"
@@ -44,7 +44,7 @@
           На рассмотрении лидера
         </button>
         <button class="btn-non-active" *ngIf="participateStatus == 1">
-          Вы уже в проекте
+          Вы записаны на занятие
         </button>
       </div>
     </div>
@@ -59,7 +59,7 @@
     *ngIf="project.leader.toString() == this.userInfo.id"
     class="application-title"
   >
-    Отклики на проект
+    Записи на занятие
   </h2>
   <div
     class="pending-members"
@@ -73,11 +73,10 @@
         />
         <div class="member-name">
           <span class="m-name">{{ member.name }}</span>
-          <span class="pending">Откликнулся (-ась)</span>
+          <span class="pending">Участник (-ца)</span>
         </div>
       </div>
-      <span class="about-member-title">О себе</span>
-      <p>{{ member.skills }}</p>
+
       <div class="decide-btns">
         <button
           class="btn-accept"
@@ -85,17 +84,11 @@
         >
           Принять
         </button>
-        <button
-          class="btn-decline"
-          (click)="makeDecisionOnAddingToProject(member.id, false, project.id)"
-        >
-          Отклонить
-        </button>
       </div>
     </div>
   </div>
 
-  <h2 class="application-title">Участники проекта</h2>
+  <h2 class="application-title">Будут присутствовать</h2>
   <div class="project-members">
     <div class="pMember container-sm" *ngFor="let member of projMember">
       <div class="member-info">
