@@ -1,32 +1,29 @@
 <nav class="navbar navbar-expand-lg navbar-light container-md">
-  <a class="navbar-brand col-9 col-md-4" href="#">
+  <ul>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/">Факультеты</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/about">О нас</a>
+    </li>
+  </ul>
+
+  <a href="#">
     <img src="../../assets/images/Logo.svg" />
   </a>
-  <div class="col-2 col-md-8 d-flex flex-md-row">
-    <div class="collapse navbar-collapse" id="navbarScroll">
-      <ul
-        class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
-        style="--bs-scroll-height: 100px"
-      >
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/">Факультеты</a>
-        </li>
-      </ul>
-    </div>
-    <div class="d-flex flex-row">
-      <div *ngIf="getEmail" class="dropdown">
-        <div class="profile-part">
-          <button class="dropbtn">{{ user.name }}</button>
-          <img src="../../assets/images/User-profile-picture.svg" alt="" />
-        </div>
-        <div class="dropdown-content">
-          <a href="#" routerLink="/profile">Кабинет пользователя</a>
-          <a (click)="logout()">Выйти из аккаунта</a>
-        </div>
+  <div class="d-flex flex-row">
+    <div *ngIf="getEmail" class="dropdown">
+      <div class="profile-part">
+        <button class="dropbtn">{{ user.name }}</button>
+        <img src="../../assets/images/User-profile-picture.svg" alt="" />
       </div>
-      <button class="login-btn" *ngIf="!getEmail" routerLink="/login">
-        Войти в аккаунт
-      </button>
+      <div class="dropdown-content">
+        <a href="#" routerLink="/profile">Кабинет пользователя</a>
+        <a (click)="logout()">Выйти из аккаунта</a>
+      </div>
     </div>
+    <button class="login-btn" *ngIf="!getEmail" routerLink="/login">
+      Войти в аккаунт
+    </button>
   </div>
 </nav>

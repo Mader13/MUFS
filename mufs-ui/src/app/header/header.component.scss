@@ -1,10 +1,21 @@
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+}
+ul {
+  list-style-type: none;
+  display: flex;
+  padding-left: 0;
+}
 .navbar {
-  height: 100px;
+  height: 120px;
   padding: 25px 100px 25px 100px;
 
   .navbar-brand {
     img {
-      height: 60px;
+      width: 220px;
     }
 
     font-weight: bold;
