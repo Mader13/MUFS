@@ -1,12 +1,11 @@
-nav {
-  background-color: rgba(62, 62, 120, 1);
-}
 .navbar {
   height: 100px;
   padding: 25px 100px 25px 100px;
 
   .navbar-brand {
-    color: white;
+    img {
+      height: 60px;
+    }
 
     font-weight: bold;
     margin-right: 25px;
@@ -17,51 +16,29 @@ nav {
     margin: auto 10px;
     padding: 18px;
     border-radius: 8px;
-    color: white;
+    color: rgb(0, 0, 0);
     font-weight: 600;
   }
+
   .nav-link:hover {
-    background-color: rgba(37, 42, 173, 1);
+    color: rgb(11, 120, 184);
     transition: color 0.5s;
   }
 
-  .d-flex {
-    input {
-      color: black;
-      border-radius: 8px;
-      font-size: 1.05em;
-      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-      padding-left: 20px;
-      margin-right: 10px;
-    }
-
-    button {
-      font-size: 1.1em;
-      font-weight: bold;
-      color: white;
-      text-decoration: none;
-      background-color: rgba(56, 64, 255, 1);
-      border: 1px solid rgba(0, 0, 0, 0);
-      padding: 5px 20px;
-    }
-    button:hover {
-      background-color: rgb(37, 42, 173);
-    }
-    .form-control.me-2 {
-      height: 60px;
-      width: 500px;
-    }
-  }
-
   .profile-part {
+    background-color: rgb(11, 120, 184);
+    border-radius: 15px;
+
     .dropbtn {
-      background-color: rgba(62, 62, 120, 1);
+      background-color: rgb(11, 120, 184);
       color: white;
       padding: 16px;
       font-size: 16px;
       border: none;
+      border-radius: 15px;
       cursor: default;
     }
+
     img {
       width: 50px;
       border-radius: 50%;
@@ -108,20 +85,23 @@ nav {
   .dropdown:hover .dropdown-content {
     display: block;
   }
+
   .login-btn {
     font-size: 1.1em;
     font-weight: bold;
     color: white;
     text-decoration: none;
-    background-color: rgba(56, 64, 255, 1);
+    background-color: rgb(11, 120, 184);
     border: 1px solid rgba(0, 0, 0, 0);
     padding: 5px 20px;
     height: 60px;
     border-radius: 8px;
   }
+
   .login-btn:hover {
-    background-color: rgb(37, 42, 173);
+    background-color: rgb(77, 167, 220);
     transition: color 0.5s;
   }
+
   /* Change the background color of the dropdown button when the dropdown content is shown */
 }

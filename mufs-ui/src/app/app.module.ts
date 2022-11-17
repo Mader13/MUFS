@@ -23,6 +23,12 @@ import { CreateProjectPageComponent } from './components/pages/create-project-pa
 import { BannerComponent } from './components/partials/banner/banner.component';
 import { AboutPageComponent } from './components/pages/about-page/about-page.component';
 import { FacultiesComponent } from './components/pages/faculties/faculties.component';
+import { FacultyOilComponent } from './components/pages/faculty-oil/faculty-oil.component';
+import { FacultyGeneralComponent } from './components/pages/faculty-general/faculty-general.component';
+import { FacultyItComponent } from './components/pages/faculty-it/faculty-it.component';
+import { FacultyEconomyComponent } from './components/pages/faculty-economy/faculty-economy.component';
+import { FacultyAutoComponent } from './components/pages/faculty-auto/faculty-auto.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +48,11 @@ import { FacultiesComponent } from './components/pages/faculties/faculties.compo
     BannerComponent,
     AboutPageComponent,
     FacultiesComponent,
+    FacultyOilComponent,
+    FacultyGeneralComponent,
+    FacultyItComponent,
+    FacultyEconomyComponent,
+    FacultyAutoComponent,
   ],
   imports: [
     BrowserModule,

@@ -39,7 +39,10 @@ export class ProjectsService {
       PROJECTS_BY_ID_URL + idProject + '/userSearch'
     );
   }
-
+  getByFaculty(faculty: string) {
+    console.log(PROJECTS_URL + '/' + faculty);
+    return this.http.get<Project[]>(PROJECTS_URL + '/' + faculty);
+  }
   // getUserProjects(idProjects: string[]): Observable<Project[]> {
   //   return this.http.get<Project[]>(PROJECTS_URL + '/userSearch', idProjects)
   // }

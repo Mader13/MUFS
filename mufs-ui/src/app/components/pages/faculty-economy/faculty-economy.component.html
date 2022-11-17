@@ -1,0 +1,22 @@
+<div class="faculty-description">
+  <img src="" alt="" />
+  <div class="description">
+    <h2>Экономист</h2>
+    <p>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum, at quo
+      incidunt ea numquam officia rem enim. Voluptatem, ratione consequatur.
+    </p>
+  </div>
+</div>
+
+<div class="lessons" *ngFor="let project of projects">
+  <div class="lesson">
+    <h4>{{ project.title }}</h4>
+    <p>
+      {{ project.description }}
+    </p>
+    <a class="link-project-about" routerLink="/projects/{{ project.id }}"
+      >Узнать больше</a
+    >
+  </div>
+</div>
