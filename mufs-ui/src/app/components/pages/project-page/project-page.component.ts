@@ -33,6 +33,7 @@ export class ProjectPageComponent implements OnInit {
     activatedRoute.params.subscribe((params) => {
       if (params.id)
         projectsService.getProjectById(params.id).subscribe((serverProject) => {
+          console.log(serverProject);
           this.project = serverProject;
           this.members = this.project.members;
           this.pendingMembers = this.project.pendingMembers;

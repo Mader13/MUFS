@@ -41,9 +41,11 @@ router.get(
     res.send(project);
   })
 );
+
 router.get(
-  "/:id",
+  "/faculty/:id",
   asyncHandler(async (req, res) => {
+    // const { faculty } = req.body;
     console.log(req.params.id);
     const projects = await ProjectModel.find({
       faculty: req.params.id,

@@ -19,10 +19,6 @@ export class FacultyAutoComponent implements OnInit {
   ) {
     let projectsObservable: Observable<Project[]>;
     activatedRoute.params.subscribe((params: any) => {
-      // if (params.searchTerm)
-      //   projectsObservable = this.projectsService.getAllProjectBySearchTerm(
-      //     params.searchTerm
-      //   );
       projectsObservable = projectsService.getByFaculty('auto');
 
       projectsObservable.subscribe((serverProjects) => {
