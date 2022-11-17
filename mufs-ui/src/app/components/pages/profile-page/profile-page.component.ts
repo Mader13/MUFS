@@ -34,6 +34,7 @@ export class ProfilePageComponent implements OnInit {
       this.projectsService
         .getProjectsByIdUser(project)
         .subscribe((serverProject) => {
+          console.log(serverProject);
           this.projects.push(serverProject);
         });
     });
