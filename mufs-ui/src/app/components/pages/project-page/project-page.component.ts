@@ -66,7 +66,7 @@ export class ProjectPageComponent implements OnInit {
       return this.participateStatus;
     }
     if (this.project.pendingMembers.includes(id)) {
-      this.participateStatus = 2;
+      this.participateStatus = 1;
       return this.participateStatus;
     }
     this.participateStatus = 3;
@@ -103,7 +103,6 @@ export class ProjectPageComponent implements OnInit {
       idProject: idProject,
       decision: decision,
     };
-    console.log(query, 'Запрос внутри makeDecision');
     this.pMember.forEach((pm, index) => {
       if (pm.id == pMemberID) {
         this.pMember.splice(index, 1);
@@ -114,9 +113,7 @@ export class ProjectPageComponent implements OnInit {
       this.projectsService.decideAddingNewMember(query).subscribe((_) => {});
       this.userService
         .addUserToProject(pMemberID, idProject)
-        .subscribe((user) => {
-          console.log(user, 'результат выполнения');
-        });
+        .subscribe((user) => {});
     } else {
       this.projectsService.decideAddingNewMember(query).subscribe((_) => {});
     }

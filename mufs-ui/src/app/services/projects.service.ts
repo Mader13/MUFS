@@ -50,10 +50,13 @@ export class ProjectsService {
       .pipe(
         tap({
           next: (project: Project) => {
-            this.toast.success('Отправлена заявка на участие в проекте');
+            this.toast.success('Участие подтверждено');
           },
           error: (errorResponse) => {
-            this.toast.error(errorResponse.error, 'Добавление неудачно.');
+            this.toast.error(
+              errorResponse.error,
+              'Участие подтверждено неудачно.'
+            );
           },
         })
       );

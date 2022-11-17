@@ -15,7 +15,7 @@ router.post(
     if (project) {
       res
         .status(HTTP_BAD_REQUEST)
-        .send("Проект с таким названием уже есть в MUFS");
+        .send("Занятие с таким названием уже есть в системе");
       return;
     }
 
@@ -45,7 +45,7 @@ router.put("/:id/add", async (req, res) => {
   const { idUser } = req.body;
   const project = await ProjectModel.updateOne(
     { _id: req.params.id },
-    { $addToSet: { pendingMembers: idUser } },
+    { $addToSet: { members: idUser } },
     { returnNewDocument: true }
   );
 

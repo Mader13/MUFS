@@ -21,17 +21,12 @@
           <input type="password" name="newPassword" value="" />
           <button>Сменить пароль</button>
         </div>
-        <div class="col user-skills">
-          <h3>Основная информация о пользователе</h3>
-
-          <p>{{ user.skills }}</p>
-        </div>
       </div>
       <div class="current-projects">
         <button class="btn-begin-project" routerLink="/create-project">
-          НАЧАТЬ СВОЙ ПРОЕКТ
+          Создать занятие
         </button>
-        <h2>Ваши текущие проекты</h2>
+        <h2>Ваши текущие занятия</h2>
         <h1 *ngIf="user.idProject.length == 0">Пока что здесь пусто</h1>
         <div class="user-projects">
           <div class="user-project" *ngFor="let p of this.projects">
@@ -40,7 +35,7 @@
             >
             <span>Количество участников: {{ p.members.length }}</span>
             <span class="leader-status" *ngIf="user.id == p.leader.toString()"
-              >Лидер</span
+              >Организатор</span
             >
           </div>
         </div>
