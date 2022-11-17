@@ -45,7 +45,7 @@ router.put("/:id/add", async (req, res) => {
   const { idUser } = req.body;
   const project = await ProjectModel.updateOne(
     { _id: req.params.id },
-    { $addToSet: { pendingMembers: idUser } },
+    { $addToSet: { members: idUser } },
     { returnNewDocument: true }
   );
 

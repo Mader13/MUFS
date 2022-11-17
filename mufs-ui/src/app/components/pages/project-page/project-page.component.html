@@ -40,10 +40,13 @@
         >
           Участвовать
         </button>
-        <button class="btn-non-active" *ngIf="participateStatus == 2">
-          На рассмотрении лидера
-        </button>
-        <button class="btn-non-active" *ngIf="participateStatus == 1">
+        <!-- <button class="btn-non-active" *ngIf="participateStatus == 1">
+          Вы записаны на занятие
+        </button> -->
+        <button
+          class="btn-non-active"
+          *ngIf="participateStatus == 1 || participateStatus == 2"
+        >
           Вы записаны на занятие
         </button>
       </div>
@@ -55,12 +58,12 @@
       </p>
     </div>
   </div>
-  <h2
+  <!-- <h2
     *ngIf="project.leader.toString() == this.userInfo.id"
     class="application-title"
   >
     Записи на занятие
-  </h2>
+  </h2> -->
   <div
     class="pending-members"
     *ngIf="project.leader.toString() == this.userInfo.id"

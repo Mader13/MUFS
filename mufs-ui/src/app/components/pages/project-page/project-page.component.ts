@@ -66,7 +66,7 @@ export class ProjectPageComponent implements OnInit {
       return this.participateStatus;
     }
     if (this.project.pendingMembers.includes(id)) {
-      this.participateStatus = 2;
+      this.participateStatus = 1;
       return this.participateStatus;
     }
     this.participateStatus = 3;
