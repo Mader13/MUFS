@@ -24,7 +24,7 @@ router.post(
       description,
       title,
       leader,
-      members: [leader],
+      members: [],
       pendingMembers: [],
     };
 
