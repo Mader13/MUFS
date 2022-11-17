@@ -63,6 +63,7 @@ export class CreateProjectPageComponent implements OnInit {
     };
     this.projectsService.create(project).subscribe((res) => {
       this.Project = res;
+
       this.userService
         .addUserToProject(userID.id, this.Project.id.toString())
         .subscribe((_) => {});
