@@ -1,10 +1,71 @@
+@media (max-width: 800px) {
+  nav {
+    width: 100% !important;
+  }
+  .navbar-brand {
+    display: none;
+  }
+  .break {
+    flex-basis: 100%;
+  }
+  .d-flex {
+    input {
+      width: 300px !important;
+      padding: 5px 20px !important;
+      margin: 0 10px !important;
+    }
+  }
+  .navbar {
+    .dropdown-content {
+      display: block !important;
+      position: relative !important;
+      box-shadow: none !important;
+      text-align: center !important;
+    }
+  }
+  nav {
+    background-color: rgba(62, 62, 120, 1);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: auto 50px;
+  }
+}
+@media (max-width: 600px) {
+  nav {
+    width: 100% !important;
+  }
+  .nav-link {
+    flex-basis: 100%;
+    text-align: center;
+  }
+  .d-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2em;
+    input {
+      width: 220px !important;
+    }
+    button {
+      width: 100px;
+      height: 60px;
+    }
+  }
+}
+
 nav {
   background-color: rgba(62, 62, 120, 1);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: auto 50px;
+  gap: 2em;
 }
-.navbar {
-  height: 100px;
-  padding: 25px 100px 25px 100px;
 
+.navbar {
   .navbar-brand {
     img {
       height: 120px;
@@ -16,7 +77,7 @@ nav {
   }
 
   .nav-link {
-    font-size: 1.05em;
+    font-size: 1.1em;
     margin: auto 10px;
     padding: 18px;
     border-radius: 8px;
@@ -36,6 +97,7 @@ nav {
       box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
       padding-left: 20px;
       margin-right: 10px;
+      width: 400px;
     }
 
     button {
@@ -50,9 +112,8 @@ nav {
     button:hover {
       background-color: rgb(37, 42, 173);
     }
-    .form-control.me-2 {
+    .form-control {
       height: 60px;
-      width: 500px;
     }
   }
 
@@ -61,11 +122,11 @@ nav {
       background-color: rgba(62, 62, 120, 1);
       color: white;
       padding: 16px;
-      font-size: 16px;
       border: none;
       cursor: default;
     }
     img {
+      background-color: rgba(62, 62, 120, 1);
       width: 50px;
       border-radius: 50%;
     }
@@ -74,7 +135,7 @@ nav {
   /* The container <div> - needed to position the dropdown content */
   .dropdown {
     font-size: 1.1em;
-
+    font-weight: 600;
     position: relative;
     display: inline-block;
   }
@@ -126,5 +187,4 @@ nav {
     background-color: rgb(37, 42, 173);
     transition: color 0.5s;
   }
-  /* Change the background color of the dropdown button when the dropdown content is shown */
 }

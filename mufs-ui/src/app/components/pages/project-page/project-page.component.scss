@@ -8,6 +8,11 @@
     max-width: 400px;
   }
 }
+@media (max-width: 440px) {
+  .project-info {
+    max-width: 300px;
+  }
+}
 p {
   font-size: 1.2em;
 }
@@ -113,7 +118,6 @@ p {
   }
 
   .delete-project {
-    margin-top: 20px;
     color: rgb(192, 17, 17);
     border: 4px solid rgb(192, 17, 17);
     &:hover {
@@ -121,6 +125,16 @@ p {
       transition: background-color 0.2s;
       color: white;
     }
+  }
+
+  .control-project {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 3em;
   }
 }
 

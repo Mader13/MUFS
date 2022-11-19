@@ -2,10 +2,11 @@
   <a class="navbar-brand" href="#">
     <img src="../../assets/images/Logo.svg" alt="" />
   </a>
+  <div class="break"></div>
   <form class="d-flex">
     <input
       #s
-      class="form-control me-2"
+      class="form-control"
       type="search"
       placeholder="Поиск..."
       aria-label="Search"
@@ -16,30 +17,19 @@
       Поиск
     </button>
   </form>
-  <div class="container-fluid">
-    <div class="collapse navbar-collapse" id="navbarScroll">
-      <ul
-        class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
-        style="--bs-scroll-height: 100px"
-      >
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/">Проекты</a>
-        </li>
-      </ul>
+  <div class="break"></div>
+  <a class="nav-link" routerLink="/">Проекты</a>
+  <div *ngIf="getEmail" class="dropdown">
+    <div class="profile-part">
+      <img src="../../assets/images/User-profile-picture.png" alt="" />
+      <button class="dropbtn">{{ user.name }}</button>
     </div>
-    <div *ngIf="getEmail" class="dropdown">
-      <div class="profile-part">
-        <img src="../../assets/images/User-profile-picture.png" alt="" />
-        <button class="dropbtn">{{ user.name }}</button>
-      </div>
-      <div class="dropdown-content">
-        <a href="#" routerLink="/profile">Кабинет пользователя</a>
-        <a (click)="logout()">Выйти из аккаунта</a>
-      </div>
+    <div class="dropdown-content">
+      <a href="#" routerLink="/profile">Кабинет пользователя</a>
+      <a (click)="logout()">Выйти из аккаунта</a>
     </div>
-
-    <button class="login-btn" *ngIf="!getEmail" routerLink="/login">
-      Войти в аккаунт
-    </button>
   </div>
+  <button class="login-btn" *ngIf="!getEmail" routerLink="/login">
+    Войти в аккаунт
+  </button>
 </nav>

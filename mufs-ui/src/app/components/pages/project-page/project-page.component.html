@@ -31,6 +31,7 @@
         <span>Уже участвуют в проекте: {{ projMember.length }}</span>
       </div>
       <div
+        class="control-project"
         *ngIf="!(project.leader.toString() == this.user?.id) || !this.user?.id"
       >
         <button
@@ -46,14 +47,14 @@
         <button class="btn-non-active" *ngIf="participateStatus == 1">
           Вы уже в проекте
         </button>
+        <button
+          class="btn btn-primary delete-project"
+          *ngIf="project.leader.toString() == this.userInfo.id"
+          (click)="openDialogDeleteProject()"
+        >
+          Удалить проект
+        </button>
       </div>
-      <button
-        class="btn btn-primary delete-project"
-        *ngIf="project.leader.toString() == this.userInfo.id"
-        (click)="openDialogDeleteProject()"
-      >
-        Удалить проект
-      </button>
     </div>
     <div class="project-info">
       <h1>{{ project.title }}</h1>

@@ -3,6 +3,7 @@ import { Project } from 'src/app/shared/models/Project';
 import { ProjectsService } from 'src/app/services/projects.service';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-card-projects',
   templateUrl: './card-projects.component.html',
