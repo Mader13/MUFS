@@ -38,7 +38,7 @@ export class LoginPageComponent implements OnInit {
 
     this.userService
       .login({
-        email: this.fc.email.value,
+        email: this.fc.email.value.toLowerCase(),
         password: this.fc.password.value,
       })
       .subscribe(() => {
