@@ -91,6 +91,19 @@ export class ProjectPageComponent implements OnInit {
     return this.participateStatus;
   }
 
+  excludeUserFromProject(userID: string) {
+    this.projectsService
+      .excludeUserFromProject(userID, this.project.id)
+      .subscribe((serverProject) => {
+        this.members = serverProject.members;
+      });
+    this.userService
+      .deleteProjectFromUser(userID, this.project.id)
+      .subscribe((_) => {});
+
+    this.projMember = this.projMember.splice(this.members.indexOf(userID), 1);
+  }
+
   getLeaderInfo() {
     this.userService.getUserByID(this.idLeader).subscribe((serverUser) => {
       this.userProject = serverUser;

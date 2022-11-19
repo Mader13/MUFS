@@ -28,7 +28,7 @@
         </div>
       </div>
       <div class="members-count">
-        <span>Уже участвуют в проекте: {{ project.members.length }}</span>
+        <span>Уже участвуют в проекте: {{ projMember.length }}</span>
       </div>
       <div
         *ngIf="!(project.leader.toString() == this.user?.id) || !this.user?.id"
@@ -117,6 +117,16 @@
       </div>
       <span class="about-member-title">О себе</span>
       <p>{{ member.skills }}</p>
+      <button
+        (click)="excludeUserFromProject(member.id)"
+        class="btn btn-exclude"
+        *ngIf="
+          project.leader.toString() == this.userInfo.id &&
+          this.userInfo.id != member.id
+        "
+      >
+        Исключить из проекта
+      </button>
     </div>
   </div>
 </div>

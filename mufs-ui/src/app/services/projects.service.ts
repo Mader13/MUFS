@@ -68,6 +68,26 @@ export class ProjectsService {
       );
   }
 
+  excludeUserFromProject(
+    userID: string,
+    projectID: string
+  ): Observable<Project> {
+    let idUserjsonStr = `{ "userID": "${userID}" }`;
+    let idUserjson = JSON.parse(idUserjsonStr);
+    return this.http
+      .put<Project>(PROJECTS_BY_ID_URL + projectID + '/deleteUser', idUserjson)
+      .pipe(
+        tap({
+          next: (project: Project) => {
+            this.toast.info('Пользователь удален из проекта');
+          },
+          error: (errorResponse) => {
+            this.toast.error(errorResponse.error, 'Удаление неудачно.');
+          },
+        })
+      );
+  }
+
   decideAddingNewMember(query: IUserAddToProjectDecision): Observable<Project> {
     return this.http
       .put<Project>(PROJECTS_BY_ID_URL + query.idProject + '/decide', query)

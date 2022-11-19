@@ -110,7 +110,19 @@ router.put(
     }
   })
 );
-
+router.put(
+  "/:id/deleteUser",
+  asyncHandler(async (req, res) => {
+    const { userID } = req.body;
+    console.log(userID);
+    const project = await ProjectModel.updateOne(
+      { _id: req.params.id },
+      { $pull: { members: userID } },
+      { returnNewDocument: true }
+    );
+    res.send(project);
+  })
+);
 router.get(
   "/",
   asyncHandler(async (req, res) => {
