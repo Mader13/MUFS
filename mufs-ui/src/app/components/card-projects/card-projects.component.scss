@@ -59,3 +59,10 @@ app-not-found {
   align-items: center;
   font-size: 1.5em;
 }
+mat-paginator {
+  font-size: 1.2em;
+  color: rgba(62, 62, 120, 1);
+  span {
+    font-size: 1.2em;
+  }
+}
