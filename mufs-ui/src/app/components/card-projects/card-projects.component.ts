@@ -1,8 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Project } from 'src/app/shared/models/Project';
 import { ProjectsService } from 'src/app/services/projects.service';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import {
+  MatPaginatorIntl,
+  MatPaginatorModule,
+  PageEvent,
+} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-card-projects',
@@ -11,6 +16,7 @@ import { Observable } from 'rxjs';
 })
 export class CardProjectsComponent implements OnInit {
   projects: Project[] = [];
+  sliceProjects: Project[] = [];
   public amountProjects!: number;
   public isThereProjects!: boolean;
   constructor(
@@ -27,7 +33,9 @@ export class CardProjectsComponent implements OnInit {
 
       projectsObservable.subscribe((serverProjects) => {
         this.projects = serverProjects;
+
         this.amountProjects = this.projects.length;
+        this.sliceProjects = this.projects.slice(0, 5);
         console.log(this.amountProjects);
         if (this.amountProjects != 0) {
           this.isThereProjects = true;
@@ -38,7 +46,14 @@ export class CardProjectsComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    console.log(this.projects.length);
+  OnPageChange(event: PageEvent) {
+    const startIndex = event.pageIndex + event.pageSize;
+    let endIndex = startIndex + event.pageSize;
+    if (endIndex > this.projects.length) {
+      endIndex = this.projects.length;
+    }
+    this.sliceProjects = this.projects.slice(startIndex, endIndex);
   }
+
+  ngOnInit(): void {}
 }

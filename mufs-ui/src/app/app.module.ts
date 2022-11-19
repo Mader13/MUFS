@@ -24,6 +24,8 @@ import { BannerComponent } from './components/partials/banner/banner.component';
 import { AboutPageComponent } from './components/pages/about-page/about-page.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PopUpDeleteProjectComponent } from './components/partials/pop-up-delete-project/pop-up-delete-project.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,6 +59,7 @@ import { PopUpDeleteProjectComponent } from './components/partials/pop-up-delete
     }),
     NgxNavbarModule,
     MatDialogModule,
+    MatPaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
