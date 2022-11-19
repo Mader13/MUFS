@@ -40,9 +40,18 @@ export class ProjectsService {
     );
   }
 
-  // getUserProjects(idProjects: string[]): Observable<Project[]> {
-  //   return this.http.get<Project[]>(PROJECTS_URL + '/userSearch', idProjects)
-  // }
+  deleteProjectByID(idProject: string): Observable<Project> {
+    return this.http.delete<Project>(PROJECTS_BY_ID_URL + idProject).pipe(
+      tap({
+        next: (project: Project) => {
+          this.toast.info('Проект удален');
+        },
+        error: (errorResponse) => {
+          this.toast.error(errorResponse.error, 'Удаление неудачно.');
+        },
+      })
+    );
+  }
 
   addNewParticipant(query: IUserParticipate): Observable<Project> {
     return this.http

@@ -1,0 +1,11 @@
+<h2>Удалить проект "{{ projectTitle }}"?</h2>
+<div class="buttons">
+  <button
+    class="yes-button"
+    [mat-dialog-close]="true"
+    (click)="deleteProject()"
+  >
+    Да
+  </button>
+  <button class="no-button" [mat-dialog-close]="true">Нет</button>
+</div>

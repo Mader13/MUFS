@@ -22,8 +22,14 @@ export class CreateProjectPageComponent implements OnInit {
   Project!: Project;
   public project: Project;
   createProjectForm: FormGroup = new FormGroup({
-    title: new FormControl(Validators.required),
-    description: new FormControl(Validators.required, Validators.minLength(50)),
+    title: new FormControl(Validators.required, [
+      Validators.minLength(3),
+      Validators.maxLength(80),
+    ]),
+    description: new FormControl(Validators.required, [
+      Validators.minLength(50),
+      Validators.maxLength(1000),
+    ]),
   });
   isSubmitted = false;
 
@@ -43,8 +49,22 @@ export class CreateProjectPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.createProjectForm = this.formBuilder.group({
-      title: ['', [Validators.required, Validators.minLength(3)]],
-      description: ['', [Validators.required, Validators.minLength(50)]],
+      title: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(80),
+        ],
+      ],
+      description: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(50),
+          Validators.maxLength(1000),
+        ],
+      ],
     });
   }
 

@@ -49,7 +49,7 @@ export class RegisterUserPageComponent implements OnInit {
     const formValues = this.registerForm.value;
     const user: IUserRegister = {
       name: formValues.name,
-      email: formValues.email,
+      email: formValues.email.toLowerCase(),
       password: formValues.password,
       confirmPassword: formValues.confirmPassword,
       skills: formValues.skills,

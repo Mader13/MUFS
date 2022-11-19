@@ -1,0 +1,42 @@
+.yes-button {
+  height: 60px;
+  width: 140px;
+  padding: auto 20px;
+  background-color: white;
+  border: 4px solid rgba(62, 62, 120, 1);
+  border-radius: 8px;
+  font-size: 1.2em;
+  color: rgba(62, 62, 120, 1);
+  font-weight: bold;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  &:hover {
+    background-color: rgba(62, 62, 120, 1);
+    transition: background-color 0.2s;
+    color: white;
+  }
+}
+.no-button {
+  height: 60px;
+  width: 140px;
+
+  padding: auto 20px;
+  background-color: white;
+  border: 4px solid rgb(192, 17, 17);
+  border-radius: 8px;
+  font-size: 1.2em;
+  color: rgb(192, 17, 17);
+  font-weight: bold;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  &:hover {
+    background-color: rgb(192, 17, 17);
+    transition: background-color 0.2s;
+    color: white;
+  }
+}
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 2em;
+  flex-wrap: wrap;
+}

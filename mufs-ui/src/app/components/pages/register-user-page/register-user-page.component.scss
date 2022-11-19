@@ -3,7 +3,7 @@ text-input {
 }
 .login {
   margin-top: 25px;
-  padding-bottom: 50px;;
+  padding-bottom: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -35,7 +35,8 @@ text-input {
     align-items: center;
     flex-direction: column;
     flex-wrap: wrap;
-    min-width: 800px;
+    width: 50vw;
+    min-width: 350px;
     margin-bottom: 100px;
     background-color: rgba(62, 62, 120, 0.7);
     border-radius: 8px;
@@ -53,7 +54,6 @@ text-input {
       font-size: 1.2em;
       color: rgba(62, 62, 120, 1);
       font-weight: bold;
-
     }
   }
 }

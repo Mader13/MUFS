@@ -7,35 +7,6 @@ import { HTTP_BAD_REQUEST } from "../constants/http_status";
 const bcrypt = require("bcryptjs");
 const router = Router();
 
-router.get(
-  "/seed",
-  asyncHandler(async (req, res) => {
-    const projectsCount = await UserModel.countDocuments();
-    if (projectsCount > 0) {
-      res.send("Seed is done already");
-      return;
-    }
-
-    await UserModel.create(sample_users);
-    res.send("Seed is done");
-  })
-);
-
-// router.put(
-//   "/:id",
-//   asyncHandler(async (req, res) => {
-//     const { idProject } = req.body;
-//     console.log(req.body, "Тело реквеста");
-//     console.log(req.params.id, "Айди юзера в роутере");
-//     const user = await UserModel.updateOne(
-//       { _id: req.params.id },
-//       { $addToSet: { idProject: idProject } },
-//       { returnNewDocument: true }
-//     );
-//     res.send(user);
-//   })
-// );
-
 router.put(
   "/:id",
   asyncHandler(async (req, res) => {
@@ -51,6 +22,25 @@ router.put(
   })
 );
 
+router.put(
+  "/:id/deleteFromProject",
+  asyncHandler(async (req, res) => {
+    const { idProject } = req.body;
+    console.log(idProject, "Айди для удаления у пользователя");
+    const user = await UserModel.updateOne(
+      {
+        _id: req.params.id,
+      },
+      {
+        $pull: { idProject: idProject },
+      },
+      { returnNewDocument: true }
+    );
+
+    console.log("Проект удален у пользователя");
+    res.send(user);
+  })
+);
 router.post(
   "/login",
   asyncHandler(async (req, res) => {

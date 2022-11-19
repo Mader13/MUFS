@@ -11,6 +11,7 @@ const VALIDATORS_MESSAGES: any = {
   required: 'Не должно быть пустым',
   email: 'Эл. почта некорректна',
   minlength: 'Недостаточная длина поля',
+  maxLength: 'Слишком много символов',
   notMatch: 'Пароли не совпадают',
 };
 

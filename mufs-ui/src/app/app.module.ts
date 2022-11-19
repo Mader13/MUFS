@@ -22,6 +22,8 @@ import { ProfilePageComponent } from './components/pages/profile-page/profile-pa
 import { CreateProjectPageComponent } from './components/pages/create-project-page/create-project-page.component';
 import { BannerComponent } from './components/partials/banner/banner.component';
 import { AboutPageComponent } from './components/pages/about-page/about-page.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { PopUpDeleteProjectComponent } from './components/partials/pop-up-delete-project/pop-up-delete-project.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +42,7 @@ import { AboutPageComponent } from './components/pages/about-page/about-page.com
     CreateProjectPageComponent,
     BannerComponent,
     AboutPageComponent,
+    PopUpDeleteProjectComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +56,7 @@ import { AboutPageComponent } from './components/pages/about-page/about-page.com
       newestOnTop: false,
     }),
     NgxNavbarModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

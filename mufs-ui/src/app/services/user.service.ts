@@ -134,4 +134,20 @@ export class UserService {
       })
     );
   }
+
+  deleteProjectFromUser(idUser: string, idProject: string): Observable<User> {
+    let idPjsonStr = `{ "idProject": "${idProject}" }`;
+    let idPjson = JSON.parse(idPjsonStr);
+
+    return this.http
+      .put<User>(USER_BY_ID_URL + idUser + '/deleteFromProject', idPjson)
+      .pipe(
+        tap({
+          next: (user) => {},
+          error: (errorResponse) => {
+            console.log(errorResponse);
+          },
+        })
+      );
+  }
 }

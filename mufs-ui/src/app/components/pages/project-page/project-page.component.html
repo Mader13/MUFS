@@ -47,6 +47,13 @@
           Вы уже в проекте
         </button>
       </div>
+      <button
+        class="btn btn-primary delete-project"
+        *ngIf="project.leader.toString() == this.userInfo.id"
+        (click)="openDialogDeleteProject()"
+      >
+        Удалить проект
+      </button>
     </div>
     <div class="project-info">
       <h1>{{ project.title }}</h1>

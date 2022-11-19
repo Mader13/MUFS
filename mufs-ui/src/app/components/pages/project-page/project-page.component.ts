@@ -7,6 +7,9 @@ import { User } from 'src/app/shared/models/User';
 import { IUserParticipate } from 'src/app/shared/interfaces/IUserParticipate';
 import { IUserAddToProjectDecision } from 'src/app/shared/interfaces/IUserAddToProjectDecision';
 import { resolve } from 'path';
+import { MatDialog } from '@angular/material/dialog';
+import { PopUpDeleteProjectComponent } from '../../partials/pop-up-delete-project/pop-up-delete-project.component';
+
 @Component({
   selector: 'app-project-page',
   templateUrl: './project-page.component.html',
@@ -28,7 +31,8 @@ export class ProjectPageComponent implements OnInit {
   constructor(
     activatedRoute: ActivatedRoute,
     private projectsService: ProjectsService,
-    private userService: UserService
+    private userService: UserService,
+    private dialogRef: MatDialog
   ) {
     activatedRoute.params.subscribe((params) => {
       if (params.id)
@@ -43,6 +47,20 @@ export class ProjectPageComponent implements OnInit {
           this.getPendingMembersInfo(this.project.pendingMembers);
           this.getMembersInfo(this.members);
         });
+    });
+  }
+  closeDialogProjectDelete(): void {
+    this.dialogRef.closeAll();
+  }
+  openDialogDeleteProject() {
+    this.dialogRef.open(PopUpDeleteProjectComponent, {
+      data: {
+        id: this.project.id,
+        title: this.project.title,
+        leader: this.project.leader,
+        members: this.project.members,
+        pendingMembers: this.project.pendingMembers,
+      },
     });
   }
 

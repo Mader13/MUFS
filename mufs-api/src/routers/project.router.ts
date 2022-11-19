@@ -33,6 +33,27 @@ router.post(
   })
 );
 
+router.delete(
+  "/:id",
+  asyncHandler(async (req, res) => {
+    ProjectModel.deleteOne({ _id: req.params.id }).then((result) => {
+      console.log(result);
+      res.status(200).json({
+        message: "Post deleted!",
+      });
+    });
+    // res.send(200).json({message: 'project deleted'});
+  })
+);
+
+router.get(
+  "/:id",
+  asyncHandler(async (req, res) => {
+    const project = await ProjectModel.findById(req.params.id);
+    res.send(project);
+  })
+);
+
 router.get(
   "/:id/userSearch",
   asyncHandler(async (req, res) => {
@@ -107,14 +128,6 @@ router.get(
       title: { $regex: searchRegex },
     });
     res.send(projects);
-  })
-);
-
-router.get(
-  "/:id",
-  asyncHandler(async (req, res) => {
-    const project = await ProjectModel.findById(req.params.id);
-    res.send(project);
   })
 );
 
