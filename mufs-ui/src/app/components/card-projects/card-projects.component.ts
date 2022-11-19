@@ -35,7 +35,7 @@ export class CardProjectsComponent implements OnInit {
         this.projects = serverProjects;
 
         this.amountProjects = this.projects.length;
-        this.sliceProjects = this.projects.slice(0, 5);
+        this.sliceProjects = this.projects.slice(0, 4);
         console.log(this.amountProjects);
         if (this.amountProjects != 0) {
           this.isThereProjects = true;
@@ -47,7 +47,7 @@ export class CardProjectsComponent implements OnInit {
   }
 
   OnPageChange(event: PageEvent) {
-    const startIndex = event.pageIndex + event.pageSize;
+    const startIndex = event.pageIndex * event.pageSize;
     let endIndex = startIndex + event.pageSize;
     if (endIndex > this.projects.length) {
       endIndex = this.projects.length;

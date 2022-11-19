@@ -1,20 +1,21 @@
-<div *ngFor="let project of sliceProjects" class="container-sm">
-  <a routerLink="/projects/{{ project.id }}"
-    ><h1>{{ project.title }}</h1></a
-  >
-  <p>
-    {{ project.description }}
-  </p>
-  <hr />
-  <a class="link-project-about" routerLink="/projects/{{ project.id }}"
-    >Узнать больше</a
-  >
+<div class="projects">
+  <div *ngFor="let project of sliceProjects" class="container-sm">
+    <a routerLink="/projects/{{ project.id }}"
+      ><h1>{{ project.title }}</h1></a
+    >
+    <p>
+      {{ project.description }}
+    </p>
+    <hr />
+    <a class="link-project-about" routerLink="/projects/{{ project.id }}"
+      >Узнать больше</a
+    >
+  </div>
 </div>
-
 <mat-paginator
   [length]="this.projects.length"
-  [pageSize]="5"
-  [pageSizeOptions]="[5, 10, 20]"
+  [pageSize]="4"
+  [pageSizeOptions]="[4, 8, 16]"
   (page)="OnPageChange($event)"
 ></mat-paginator>
 <div
