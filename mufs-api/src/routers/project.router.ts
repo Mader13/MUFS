@@ -39,10 +39,9 @@ router.delete(
     ProjectModel.deleteOne({ _id: req.params.id }).then((result) => {
       console.log(result);
       res.status(200).json({
-        message: "Post deleted!",
+        message: "Project deleted!",
       });
     });
-    // res.send(200).json({message: 'project deleted'});
   })
 );
 

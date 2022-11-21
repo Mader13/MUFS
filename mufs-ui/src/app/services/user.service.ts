@@ -72,6 +72,23 @@ export class UserService {
     );
   }
 
+  deleteUser(idUser: string): Observable<User> {
+    return this.http.delete<User>(USER_BY_ID_URL + idUser).pipe(
+      tap({
+        next: (user: User) => {
+          this.userSubject.next(new User());
+          localStorage.removeItem(USER_KEY);
+          this.router.navigateByUrl('/');
+          this.toastrService.success('Пользователь удален');
+
+        },
+        error: (errorResponse) => {
+          this.toastrService.error(errorResponse.error, 'Удаление пользователя неудачно.');
+        },
+      })
+    )
+  }
+
   refreshUserInfo(idUser: string): Observable<User> {
     return this.http.get<User>(USER_BY_ID_URL + idUser).pipe(
       tap({

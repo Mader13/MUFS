@@ -20,6 +20,7 @@
           <label>Новый пароль</label>
           <input type="password" name="newPassword" value="" />
           <button>Сменить пароль</button>
+          <button (click)="deleteAccount(this.user.id)">Удалить аккаунт</button>
         </div>
         <div class="col user-skills">
           <h3>Основная информация о пользователе</h3>
