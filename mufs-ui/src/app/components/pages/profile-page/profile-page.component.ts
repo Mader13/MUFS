@@ -38,10 +38,16 @@ export class ProfilePageComponent implements OnInit {
         });
     });
   }
-  async deleteAccount(idUser: string){
-    this.userService.deleteUser(idUser).subscribe((_)=>{
-      console.log('Account deleted')
-    })
+  async deleteAccount(idUser: string) {
+    this.user.idProject.forEach((project) => {
+      this.userService
+        .deleteProjectFromUser(idUser, project)
+        .subscribe((_) => {});
+    });
+
+    this.userService.deleteUser(idUser).subscribe((_) => {
+      console.log('Account deleted');
+    });
   }
   ngOnInit(): void {
     this.refreshUser();
