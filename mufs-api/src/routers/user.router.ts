@@ -7,18 +7,17 @@ import { HTTP_BAD_REQUEST } from "../constants/http_status";
 const bcrypt = require("bcryptjs");
 const router = Router();
 
-
 router.delete(
   "/:id",
   asyncHandler(async (req, res) => {
-    UserModel.deleteOne({_id: req.params.id}).then(result => {
+    UserModel.deleteOne({ _id: req.params.id }).then((result) => {
       console.log(result);
       res.status(200).json({
         message: "User deleted!",
       });
-    })
+    });
   })
-)
+);
 
 router.put(
   "/:id",
@@ -120,6 +119,15 @@ router.get(
   asyncHandler(async (req, res) => {
     const user = await UserModel.findById(req.params.id);
     res.send(user);
+  })
+);
+
+router.get(
+  "/",
+  asyncHandler(async (req, res) => {
+    const users = await UserModel.find();
+
+    res.send(users);
   })
 );
 

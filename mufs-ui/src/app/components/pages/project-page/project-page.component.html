@@ -69,6 +69,15 @@
   >
     Отклики на проект
   </h2>
+  <h3
+    class="application-title"
+    *ngIf="
+      project.leader.toString() == this.userInfo.id &&
+      project.pendingMembers.length == 0
+    "
+  >
+    Откликов нет
+  </h3>
   <div
     class="pending-members"
     *ngIf="project.leader.toString() == this.userInfo.id"

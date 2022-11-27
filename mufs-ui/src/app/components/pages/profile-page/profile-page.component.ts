@@ -4,6 +4,8 @@ import { User } from 'src/app/shared/models/User';
 import { ProjectsService } from 'src/app/services/projects.service';
 import { Project } from 'src/app/shared/models/Project';
 import { IUserProjects } from './../../../shared/interfaces/IUserProjects';
+import { query } from '@angular/animations';
+import { IUserAddToProjectDecision } from 'src/app/shared/interfaces/IUserAddToProjectDecision';
 
 @Component({
   selector: 'app-profile-page',
@@ -39,10 +41,21 @@ export class ProfilePageComponent implements OnInit {
     });
   }
   async deleteAccount(idUser: string) {
-    this.user.idProject.forEach((project) => {
-      this.userService
-        .deleteProjectFromUser(idUser, project)
-        .subscribe((_) => {});
+    console.log(this.user.idProject, 'Пользовательские проекты');
+    this.user.idProject.forEach((pid) => {
+      console.log(pid, 'Айди проекта');
+      this.projectsService
+        .excludeUserFromProject(idUser, pid)
+        .subscribe((_) => {
+          console.log('Пользователь убран из проекта');
+        });
+      const query: IUserAddToProjectDecision = {
+        idUser: idUser,
+        idProject: pid,
+        decision: false,
+      };
+      console.log(query, 'Запрос');
+      this.projectsService.decideAddingNewMember(query).subscribe((_) => {});
     });
 
     this.userService.deleteUser(idUser).subscribe((_) => {

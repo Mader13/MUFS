@@ -126,8 +126,15 @@ router.get(
   "/",
   asyncHandler(async (req, res) => {
     const projects = await ProjectModel.find();
-    const projectsCount = await ProjectModel.countDocuments();
     res.send(projects);
+  })
+);
+
+router.get(
+  "/count",
+  asyncHandler(async (req, res) => {
+    const amountProjects = await ProjectModel.countDocuments();
+    res.send(amountProjects);
   })
 );
 

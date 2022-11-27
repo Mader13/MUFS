@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { IUserLogin } from '../shared/interfaces/IUserLogin';
 import {
+  USERS_URL,
   USER_BY_ID_URL,
   USER_LOGIN_URL,
   USER_REGISTER_URL,
@@ -80,13 +81,15 @@ export class UserService {
           localStorage.removeItem(USER_KEY);
           this.router.navigateByUrl('/');
           this.toastrService.success('Пользователь удален');
-
         },
         error: (errorResponse) => {
-          this.toastrService.error(errorResponse.error, 'Удаление пользователя неудачно.');
+          this.toastrService.error(
+            errorResponse.error,
+            'Удаление пользователя неудачно.'
+          );
         },
       })
-    )
+    );
   }
 
   refreshUserInfo(idUser: string): Observable<User> {
@@ -152,6 +155,10 @@ export class UserService {
     );
   }
 
+  countUsers(): Observable<User> {
+    return this.http.get<User>(USERS_URL + 'count');
+  }
+
   deleteProjectFromUser(idUser: string, idProject: string): Observable<User> {
     let idPjsonStr = `{ "idProject": "${idProject}" }`;
     let idPjson = JSON.parse(idPjsonStr);
@@ -166,5 +173,8 @@ export class UserService {
           },
         })
       );
+  }
+  getAll(): Observable<User[]> {
+    return this.http.get<User[]>(USERS_URL);
   }
 }

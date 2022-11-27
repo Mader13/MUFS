@@ -40,6 +40,10 @@ export class ProjectsService {
     );
   }
 
+  countProjects(): Observable<Project> {
+    return this.http.get<Project>(PROJECTS_URL + '/count');
+  }
+
   deleteProjectByID(idProject: string): Observable<Project> {
     return this.http.delete<Project>(PROJECTS_BY_ID_URL + idProject).pipe(
       tap({
@@ -95,13 +99,9 @@ export class ProjectsService {
         tap({
           next: (project: Project) => {
             if (query.decision) {
-              this.toast.success(
-                'Заявка рассмотрена. Пользователь добавлен в проект'
-              );
+              this.toast.success('Пользователь добавлен в проект');
             } else {
-              this.toast.info(
-                'Заявка рассмотрена. Пользователю отказано в участии'
-              );
+              this.toast.info('Пользователю отказано в участии');
             }
           },
           error: (errorResponse) => {
