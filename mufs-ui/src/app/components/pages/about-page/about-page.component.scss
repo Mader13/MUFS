@@ -43,6 +43,8 @@
 }
 
 .container-fluid {
+  display: flex;
+  justify-content: center;
   .about-us-container {
     min-height: 90vh;
     margin: 50px 50px 0px 50px;
