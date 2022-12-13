@@ -9,6 +9,7 @@ export interface User {
   profilePicture: "";
   userRole: number;
   skills: string;
+  courses: string[];
 }
 
 export const UserSchema = new Schema<User>(
@@ -20,6 +21,7 @@ export const UserSchema = new Schema<User>(
     userRole: { type: Number, required: true },
     skills: { type: String, required: false },
     password: { type: String, required: true },
+    courses: { type: [String], required: false },
   },
   {
     timestamps: true,

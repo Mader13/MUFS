@@ -2,9 +2,7 @@
   <img class="images" src="../../assets/images/IT.svg" alt="image1" />
   <div class="description">
     <h2>Нефтяник</h2>
-    <p class="about">
-      Скоро...
-    </p>
+    <p class="about">Скоро...</p>
   </div>
 </div>
 <div class="courses">
@@ -12,15 +10,18 @@
     <h1 class="course_h1">Курсы:</h1>
   </div>
   <div class="lessons">
-    <div class="lesson"  *ngFor="let project of projects">
+    <div class="lesson" *ngFor="let project of projects">
       <div class="about_course">
-        <h4>{{ project.title }}</h4>
+        <a routerLink="/projects/{{ project.id }}"
+          ><h4>{{ project.title }}</h4></a
+        >
         <p class="desc">
-        {{ project.description }}
+          {{ project.description }}
         </p>
       </div>
-        <a class="link-project-about" routerLink="/projects/{{ project.id }}"
-         >Подробнее</a>
+      <a class="link-project-about" routerLink="/projects/{{ project.id }}"
+        >Подробнее</a
+      >
     </div>
   </div>
 </div>

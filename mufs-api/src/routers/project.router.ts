@@ -27,6 +27,7 @@ router.post(
       members: [],
       pendingMembers: [],
       faculty,
+      studies: [],
     };
 
     const dbProject = await ProjectModel.create(newProject);
@@ -58,6 +59,17 @@ router.put("/:id/add", async (req, res) => {
   const project = await ProjectModel.updateOne(
     { _id: req.params.id },
     { $addToSet: { members: idUser } },
+    { returnNewDocument: true }
+  );
+
+  res.send(project);
+});
+
+router.put("/:id/addStudy", async (req, res) => {
+  const { course, study } = req.body;
+  const project = await ProjectModel.updateOne(
+    { _id: req.params.id },
+    { $addToSet: { studies: study } },
     { returnNewDocument: true }
   );
 

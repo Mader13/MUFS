@@ -30,26 +30,26 @@
       <div class="members-count">
         <span>На занятие записалось: {{ project.members.length }}</span>
       </div>
-      <div
+      <!-- <div
         *ngIf="!(project.leader.toString() == this.user?.id) || !this.user?.id"
       >
         <button
           *ngIf="participateStatus == 3"
           class="btn btn-primary"
-          (click)="participateInProject()"
+          (click)="participateInProject('s')"
         >
           Участвовать
         </button>
-        <!-- <button class="btn-non-active" *ngIf="participateStatus == 1">
+        <button class="btn-non-active" *ngIf="participateStatus == 1">
           Вы записаны на занятие
-        </button> -->
+        </button>
         <button
           class="btn-non-active"
           *ngIf="participateStatus == 1 || participateStatus == 2"
         >
           Вы записаны на занятие
         </button>
-      </div>
+      </div> -->
     </div>
     <div class="project-info">
       <h1>{{ project.title }}</h1>
@@ -64,34 +64,27 @@
   >
     Записи на занятие
   </h2> -->
-  <div
-    class="pending-members"
-    *ngIf="project.leader.toString() == this.userInfo.id"
-  >
-    <div class="pMember container-sm" *ngFor="let member of pMember">
-      <div class="member-info">
-        <img
-          src="../../../../assets/images/User-profile-picture.png"
-          alt="Фото профиля"
-        />
-        <div class="member-name">
-          <span class="m-name">{{ member.name }}</span>
-          <span class="pending">Участник (-ца)</span>
-        </div>
-      </div>
 
-      <div class="decide-btns">
-        <button
-          class="btn-accept"
-          (click)="makeDecisionOnAddingToProject(member.id, true, project.id)"
-        >
-          Принять
-        </button>
-      </div>
+  <div class="studies">
+    <div class="study" *ngFor="let study of studiesInfo">
+      <span class="study-title">{{ study.title }}</span>
+      <span>{{ study.description }}</span>
+      <span>{{ study.date }}</span>
+      <button
+        *ngIf="checkUserForStudy(study.members)"
+        (click)="participateInProject(study.id)"
+      >
+        Записаться
+      </button>
+      <button class="btn-non-active" *ngIf="!checkUserForStudy(study.members)">
+        Вы записаны на занятие
+      </button>
+
+      <span>{{ study.members }}</span>
     </div>
   </div>
 
-  <h2 class="application-title">Будут присутствовать</h2>
+  <h2 class="application-title">Участники</h2>
   <div class="project-members">
     <div class="pMember container-sm" *ngFor="let member of projMember">
       <div class="member-info">
@@ -104,8 +97,53 @@
           <span class="member">Участник (-ца)</span>
         </div>
       </div>
-      <!-- <span class="about-member-title">О себе</span>
-      <p>{{ member.skills }}</p> -->
     </div>
+  </div>
+  <div class="project-members">
+    <div class="pMember container-sm" *ngFor="let member of projMember">
+      <div class="member-info">
+        <img
+          src="../../../../assets/images/User-profile-picture.png"
+          alt="Фото профиля"
+        />
+        <div class="member-name">
+          <span class="m-name">{{ member.name }}</span>
+          <span class="member">Участник (-ца)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="display-6">Создание нового занятия</div>
+  <span class="attention">Обязательно заполнение всех полей для занятия</span>
+
+  <div class="form-create">
+    <span class="info-title">Информация о занятии</span>
+    <form [formGroup]="createStudyForm" (ngSubmit)="submitCreation()">
+      <div class="title">
+        <label>Название занятия</label>
+        <input
+          name="title"
+          formControlName="title"
+          type="text"
+          placeholder="Мин. длина 3 символа"
+        />
+      </div>
+      <div class="title">
+        <label>Дата и время проведения</label>
+        <input name="date" formControlName="date" type="datetime-local" />
+      </div>
+      <div class="description">
+        <label>Описание курса</label>
+        <textarea
+          name="description"
+          formControlName="description"
+          placeholder="Мин. длина 50 символов"
+        ></textarea>
+      </div>
+      <button>Создать новое занятия</button>
+    </form>
   </div>
 </div>

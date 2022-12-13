@@ -28,6 +28,7 @@ import { FacultyGeneralComponent } from './components/pages/faculty-general/facu
 import { FacultyItComponent } from './components/pages/faculty-it/faculty-it.component';
 import { FacultyEconomyComponent } from './components/pages/faculty-economy/faculty-economy.component';
 import { FacultyAutoComponent } from './components/pages/faculty-auto/faculty-auto.component';
+import { CreateStudyPageComponent } from './components/pages/create-study-page/create-study-page.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { FacultyAutoComponent } from './components/pages/faculty-auto/faculty-au
     FacultyItComponent,
     FacultyEconomyComponent,
     FacultyAutoComponent,
+    CreateStudyPageComponent,
   ],
   imports: [
     BrowserModule,

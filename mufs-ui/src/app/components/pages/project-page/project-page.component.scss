@@ -242,3 +242,38 @@
     }
   }
 }
+
+.studies {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2em;
+  align-items: center;
+  justify-content: center;
+  .study {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    min-height: 500px;
+    flex-basis: 450px;
+    max-width: 500px;
+    justify-content: space-between;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 8px;
+    padding: 20px;
+    span {
+      word-wrap: break-word;
+    }
+    .study-title {
+      font-size: 1.3em;
+      margin-bottom: 0.5em;
+    }
+    button {
+      border-radius: 8px;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      border: 1px solid rgba(1, 1, 1, 0.5);
+      height: 50px;
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectsService } from 'src/app/services/projects.service';
 import { Project } from 'src/app/shared/models/Project';
 import { UserService } from 'src/app/services/user.service';
@@ -7,6 +7,16 @@ import { User } from 'src/app/shared/models/User';
 import { IUserParticipate } from 'src/app/shared/interfaces/IUserParticipate';
 import { IUserAddToProjectDecision } from 'src/app/shared/interfaces/IUserAddToProjectDecision';
 import { resolve } from 'path';
+import { StudiesService } from './../../../services/studies.service';
+import { Study } from 'src/app/shared/models/Study';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { IStudyCreate } from 'src/app/shared/interfaces/IStudyCreate';
+import { IStudyAdd } from 'src/app/shared/interfaces/IStudyAdd';
 @Component({
   selector: 'app-project-page',
   templateUrl: './project-page.component.html',
@@ -18,44 +28,68 @@ export class ProjectPageComponent implements OnInit {
   userProject?: User;
   members!: string[];
   pendingMembers!: string[];
+  studiesID!: string[];
+  studyMembers!: string[];
   public pMember: Array<User> = [];
   public projMember: Array<User> = [];
+  public sMember: Array<User> = [];
+  public studiesInfo: Array<Study> = [];
+
+  createStudyForm: FormGroup = new FormGroup({
+    title: new FormControl(Validators.required),
+    description: new FormControl(Validators.required),
+    date: new FormControl(Validators.required),
+  });
+  isSubmitted = false;
+
   idLeader!: string;
   currentProject!: string;
   participateStatus!: number;
   leaderName!: string;
   userInfo!: User;
+
+  public study: Study;
+
   constructor(
     activatedRoute: ActivatedRoute,
     private projectsService: ProjectsService,
-    private userService: UserService
+    private userService: UserService,
+    private studiesService: StudiesService,
+    private router: Router,
+    private formBuilder: FormBuilder
   ) {
+    this.study = new Study();
     activatedRoute.params.subscribe((params) => {
       if (params.id)
         projectsService.getProjectById(params.id).subscribe((serverProject) => {
           console.log(serverProject);
           this.project = serverProject;
           this.members = this.project.members;
-          this.pendingMembers = this.project.pendingMembers;
+          // this.pendingMembers = this.project.pendingMembers;
           this.idLeader = this.project.leader.toString();
           this.currentProject = this.project.id.toString();
-          this.checkUserParticipation();
+          this.studiesID = this.project.studies;
+          // this.checkUserParticipation();
           this.getLeaderInfo();
-          this.getPendingMembersInfo(this.project.pendingMembers);
+          // this.getPendingMembersInfo(this.project.pendingMembers);
           this.getMembersInfo(this.members);
+          this.getStudiesInfo(this.studiesID);
         });
     });
   }
-
-  participateInProject() {
+  get fc() {
+    return this.createStudyForm.controls;
+  }
+  participateInProject(course: string) {
     const userInfo = JSON.parse(localStorage.User);
     const query: IUserParticipate = {
-      idProject: this.currentProject,
+      courseID: course,
       idUser: userInfo.id,
     };
     console.log(query);
-    this.projectsService.addNewParticipant(query).subscribe((_) => {});
+    this.studiesService.addNewParticipant(query).subscribe((_) => {});
     this.participateStatus = 2;
+    this.userService.addUserToProject(userInfo.id, course).subscribe((_) => {});
   }
 
   async checkUserParticipation() {
@@ -63,14 +97,14 @@ export class ProjectPageComponent implements OnInit {
     const id = this.userInfo.id;
 
     if (this.project.members.includes(id)) {
-      this.participateStatus = 1;
+      this.participateStatus = 2;
       return this.participateStatus;
     }
     if (this.project.pendingMembers.includes(id)) {
-      this.participateStatus = 1;
+      this.participateStatus = 2;
       return this.participateStatus;
     }
-    this.participateStatus = 3;
+    this.participateStatus = 1;
     return this.participateStatus;
   }
 
@@ -94,6 +128,29 @@ export class ProjectPageComponent implements OnInit {
       });
     }
   }
+
+  checkUserForStudy(studyMembers: string[]): boolean {
+    this.userInfo = JSON.parse(localStorage.User);
+    if (studyMembers.includes(this.userInfo.id)) {
+      return false;
+    }
+    return true;
+  }
+
+  getStudiesInfo(studies: string[]) {
+    for (let study of studies) {
+      this.studiesService.getStudiesByID(study).subscribe((serverStudy) => {
+        serverStudy.members.forEach((member) => {
+          this.userService.getUserByID(member).subscribe((serverUser) => {
+            this.sMember.push(serverUser);
+          });
+        });
+
+        this.studiesInfo.push(serverStudy);
+      });
+    }
+  }
+
   async makeDecisionOnAddingToProject(
     pMemberID: string,
     decision: boolean,
@@ -120,5 +177,35 @@ export class ProjectPageComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {}
+  submitCreation() {
+    this.isSubmitted = true;
+    if (this.createStudyForm.invalid) return;
+    const formValues = this.createStudyForm.value;
+
+    const userID = JSON.parse(localStorage.User);
+    const study: IStudyCreate = {
+      title: formValues.title,
+      description: formValues.description,
+      course: this.project.id,
+      leader: this.project.leader.toString(),
+      date: formValues.date,
+    };
+    console.log(study);
+
+    this.studiesService.create(study).subscribe((serverStudy) => {
+      const sQ: IStudyAdd = {
+        course: this.project.id,
+        study: serverStudy.id,
+      };
+      this.projectsService.addStudy(sQ).subscribe((_) => {});
+    });
+  }
+
+  ngOnInit(): void {
+    this.createStudyForm = this.formBuilder.group({
+      title: ['', [Validators.required, Validators.minLength(3)]],
+      description: ['', [Validators.required, Validators.minLength(50)]],
+      date: ['', [Validators.required]],
+    });
+  }
 }

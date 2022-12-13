@@ -5,6 +5,7 @@ import express from "express";
 import cors from "cors";
 import projectRouter from "./routers/project.router";
 import userRouter from "./routers/user.router";
+import studyRouter from "./routers/study.router";
 import { dbConnect } from "./configs/database.config";
 import path from "path";
 
@@ -23,6 +24,7 @@ app.use(express.json());
 
 app.use("/api/projects", projectRouter);
 app.use("/api/users", userRouter);
+app.use("/api/studies", studyRouter);
 
 app.use(express.static("public"));
 app.get("*", (req, res) => {

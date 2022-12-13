@@ -13,7 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 import { IUserParticipate } from '../shared/interfaces/IUserParticipate';
 import { IUserAddToProjectDecision } from '../shared/interfaces/IUserAddToProjectDecision';
 import { IUserProjects } from '../shared/interfaces/IUserProjects';
-
+import { IStudyAdd } from '../shared/interfaces/IStudyAdd';
 const PROJECT_KEY = 'Project';
 
 @Injectable({
@@ -44,9 +44,27 @@ export class ProjectsService {
     return this.http.get<Project[]>(PROJECTS_URL + '/faculty/' + faculty);
   }
 
+  addStudy(query: IStudyAdd) {
+    return this.http
+      .put<Project>(PROJECTS_BY_ID_URL + query.course + '/addStudy', query)
+      .pipe(
+        tap({
+          next: (project: Project) => {
+            //this.toast.success('Занятия до');
+          },
+          error: (errorResponse) => {
+            // this.toast.error(
+            //   errorResponse.error,
+            //   'Участие подтверждено неудачно.'
+            // );
+          },
+        })
+      );
+  }
+
   addNewParticipant(query: IUserParticipate): Observable<Project> {
     return this.http
-      .put<Project>(PROJECTS_BY_ID_URL + query.idProject + '/add', query)
+      .put<Project>(PROJECTS_BY_ID_URL + query + '/add', query)
       .pipe(
         tap({
           next: (project: Project) => {

@@ -56,6 +56,7 @@ export class RegisterUserPageComponent implements OnInit {
       userRole: 0,
       profilePicture: '',
       idProject: [],
+      courses: [],
     };
 
     this.UserService.register(user).subscribe((_) => {

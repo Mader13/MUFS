@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="display-6">Создание нового курса</div>
+  <span class="attention">Обязательно заполнение всех полей для курса</span>
+
+  <div class="form-create">
+    <span class="info-title">Информация о курсе</span>
+    <form [formGroup]="createProjectForm" (ngSubmit)="submitCreation()">
+      <div class="title">
+        <label>Название курса</label>
+        <input
+          name="title"
+          formControlName="title"
+          type="text"
+          placeholder="Мин. длина 3 символа"
+        />
+      </div>
+
+      <div class="title">
+        <label>Факультет</label>
+        <select formControlName="faculty" name="faculty">
+          <option value="general">Общенаучный факультет</option>
+          <option value="it">ИТ//Факультет</option>
+          <option value="oil">Нефтяник</option>
+          <option value="economy">Экономист</option>
+          <option value="auto">Автомобилист</option>
+        </select>
+      </div>
+      <div class="description">
+        <label>Описание курса</label>
+        <textarea
+          name="description"
+          formControlName="description"
+          placeholder="Мин. длина 50 символов"
+        ></textarea>
+      </div>
+      <button>Создать новый курс</button>
+    </form>
+  </div>
+</div>

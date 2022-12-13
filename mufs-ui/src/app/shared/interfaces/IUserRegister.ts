@@ -7,4 +7,5 @@ export interface IUserRegister {
   userRole: number;
   profilePicture: string;
   idProject: string[];
+  courses: string[];
 }

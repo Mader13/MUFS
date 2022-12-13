@@ -26,7 +26,7 @@
         <button class="btn-begin-project" routerLink="/create-project">
           Создать курс
         </button>
-        <h2>Ваши текущие занятия</h2>
+        <h2>Ваши текущие курсы</h2>
         <h1 *ngIf="user.idProject.length == 0">Пока что здесь пусто</h1>
         <div class="user-projects">
           <div class="user-project" *ngFor="let p of this.projects">
@@ -38,6 +38,16 @@
               >Организатор</span
             >
           </div>
+        </div>
+      </div>
+
+      <div class="user-projects">
+        <div class="user-project" *ngFor="let p of this.studies">
+          <h3>{{ p.title }}</h3>
+          <span>Дата и время: {{ p.date }}</span>
+          <span class="leader-status" *ngIf="user.id == p.leader.toString()"
+            >Организатор</span
+          >
         </div>
       </div>
     </div>

@@ -5,4 +5,5 @@ export class Project {
   members!: string[];
   pendingMembers!: string[];
   leader!: number;
+  studies!: string[];
 }

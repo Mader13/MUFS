@@ -8,4 +8,5 @@ export class User {
   skills?: string;
   id!: string;
   token!: string;
+  courses!: string[];
 }

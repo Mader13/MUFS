@@ -1,24 +1,23 @@
 import { model, Schema } from "mongoose";
 
-export interface Project {
+export interface Study {
   id: string;
   title: string;
   description: string;
   members: string[];
-  pendingMembers: string[];
   leader: string;
-  faculty: string;
-  studies: string[];
+  course: string;
+  date: Date;
 }
 
-export const ProjectSchema = new Schema<Project>(
+export const StudySchema = new Schema<Study>(
   {
     title: { type: String, required: true },
     description: { type: String },
     members: { type: [String], required: false },
     leader: { type: String, required: true },
-    faculty: { type: String, required: true },
-    studies: { type: [String], required: false },
+    course: { type: String, required: true },
+    date: { type: Date, required: true },
   },
   {
     toJSON: {
@@ -31,4 +30,4 @@ export const ProjectSchema = new Schema<Project>(
   }
 );
 
-export const ProjectModel = model<Project>("project", ProjectSchema);
+export const StudyModel = model<Study>("study", StudySchema);

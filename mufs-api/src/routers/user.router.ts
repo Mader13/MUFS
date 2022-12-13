@@ -43,7 +43,7 @@ router.put(
     console.log(idP, "Добавляю этот проект");
     const user = await UserModel.updateOne(
       { _id: req.params.id },
-      { $addToSet: { idProject: idP } },
+      { $addToSet: { courses: idP } },
       { returnNewDocument: true }
     );
     console.log(user);
@@ -89,6 +89,7 @@ router.post(
       userRole: 0, // создается обычный пользователь без админ. прав
       profilePicture: "",
       idProject: [],
+      courses: [],
     };
 
     const dbUser = await UserModel.create(newUser);
@@ -115,6 +116,7 @@ const generateTokenResponse = (user: any) => {
 router.get(
   "/:id",
   asyncHandler(async (req, res) => {
+    console.log(req.params.id);
     const user = await UserModel.findById(req.params.id);
     res.send(user);
   })

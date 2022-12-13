@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutPageComponent } from './components/pages/about-page/about-page.component';
 import { CreateProjectPageComponent } from './components/pages/create-project-page/create-project-page.component';
+import { CreateStudyPageComponent } from './components/pages/create-study-page/create-study-page.component';
 import { FacultiesComponent } from './components/pages/faculties/faculties.component';
 import { FacultyAutoComponent } from './components/pages/faculty-auto/faculty-auto.component';
 import { FacultyEconomyComponent } from './components/pages/faculty-economy/faculty-economy.component';
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'faculty-oil', component: FacultyOilComponent },
   { path: 'faculty-economy', component: FacultyEconomyComponent },
   { path: 'faculty-auto', component: FacultyAutoComponent },
+  { path: 'create-study', component: CreateStudyPageComponent },
 ];
 
 @NgModule({
