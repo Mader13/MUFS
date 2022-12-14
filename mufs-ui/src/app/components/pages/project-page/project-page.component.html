@@ -27,9 +27,9 @@
           </p> -->
         </div>
       </div>
-      <div class="members-count">
+      <!-- <div class="members-count">
         <span>На занятие записалось: {{ project.members.length }}</span>
-      </div>
+      </div> -->
       <!-- <div
         *ngIf="!(project.leader.toString() == this.user?.id) || !this.user?.id"
       >
@@ -84,7 +84,7 @@
     </div>
   </div>
 
-  <h2 class="application-title">Участники</h2>
+  <!-- <h2 class="application-title">Участники</h2>
   <div class="project-members">
     <div class="pMember container-sm" *ngFor="let member of projMember">
       <div class="member-info">
@@ -113,16 +113,16 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
-<div class="container">
+<div class="container d-flex flex-column align-items-center proj-create gap-3">
   <div class="display-6">Создание нового занятия</div>
   <span class="attention">Обязательно заполнение всех полей для занятия</span>
 
   <div class="form-create">
     <span class="info-title">Информация о занятии</span>
     <form [formGroup]="createStudyForm" (ngSubmit)="submitCreation()">
-      <div class="title">
+      <div class="title d-flex flex-column">
         <label>Название занятия</label>
         <input
           name="title"
@@ -131,14 +131,14 @@
           placeholder="Мин. длина 3 символа"
         />
       </div>
-      <div class="title">
+      <div class="title d-flex flex-column">
         <label>Дата и время проведения</label>
         <input name="date" formControlName="date" type="datetime-local" />
       </div>
-      <div class="description">
+      <div class="description title d-flex flex-column">
         <label>Описание курса</label>
         <textarea
-          name="description"
+          name="description title "
           formControlName="description"
           placeholder="Мин. длина 50 символов"
         ></textarea>

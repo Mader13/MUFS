@@ -3,6 +3,7 @@
     max-width: 600px;
   }
 }
+
 @media (max-width: 1200px) {
   .project-info {
     max-width: 400px;
@@ -13,6 +14,7 @@
   margin-top: 50px;
   margin-bottom: 100px;
   flex-wrap: wrap;
+
   .row {
     display: flex;
     flex-wrap: wrap;
@@ -27,6 +29,7 @@
   align-items: center;
   flex-wrap: wrap;
   max-width: 380px;
+
   .leader-info {
     display: flex;
     flex-direction: column;
@@ -36,6 +39,7 @@
     margin-bottom: 36px;
     width: 380px;
     border-radius: 8px;
+
     .leader-profile {
       background-color: rgba(0, 0, 0, 0.1);
       display: flex;
@@ -49,13 +53,16 @@
       width: 95%;
       border-radius: 8px;
       height: 62px;
+
       span {
         font-size: 1em;
       }
+
       .leader-sign {
         font-size: 0.9em;
-        color: rgba(62, 62, 120, 1);
+        color: #0B78B8;
       }
+
       .leader-profile-picture {
         width: 32px;
         height: 32px;
@@ -63,11 +70,13 @@
         margin-right: 20px;
       }
     }
+
     .about-leader {
       h3 {
         text-align: center;
         font-weight: bold;
       }
+
       p {
         padding: 16px 38px;
         line-height: 1.25;
@@ -81,15 +90,17 @@
     align-items: center;
     height: 140px;
     width: 100%;
-    border-top: 44px solid rgba(62, 62, 120, 1);
+    border-top: 44px solid #0B78B8;
     border-radius: 6px;
     margin-bottom: 36px;
     padding: 40px;
+
     span {
       font-size: 1.3em;
-      color: rgba(62, 62, 120, 1);
+      color: #0B78B8;
       margin: 0 auto;
     }
+
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   }
 
@@ -97,14 +108,15 @@
     height: 60px;
     padding: auto 20px;
     background-color: white;
-    border: 4px solid rgba(62, 62, 120, 1);
+    border: 4px solid #0B78B8;
     border-radius: 8px;
     font-size: 1.2em;
-    color: rgba(62, 62, 120, 1);
+    color: #0B78B8;
     font-weight: bold;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
     &:hover {
-      background-color: rgba(62, 62, 120, 1);
+      background-color: #0B78B8;
       transition: background-color 0.2s;
       color: white;
     }
@@ -123,13 +135,15 @@
 
   padding: 0px;
   margin: 0px 20px;
+
   h1 {
     font-weight: bold;
     text-align: center;
-    border-bottom: 44px solid rgba(62, 62, 120, 1);
+    border-bottom: 44px solid #0B78B8;
     padding: 20px;
     margin-bottom: 20px;
   }
+
   p {
     padding: 38px;
     text-overflow: ellipsis "[...]";
@@ -137,14 +151,17 @@
     overflow-wrap: break-word;
     hyphens: auto;
   }
+
   min-height: 600px;
   border-radius: 8px;
 }
+
 .application-title {
   text-align: center;
   margin: 50px;
   font-weight: bold;
 }
+
 .pending-members,
 .project-members {
   display: flex;
@@ -162,11 +179,13 @@
   padding: 20px;
   flex-direction: column;
   width: 300px;
+
   img {
     width: 35px;
     height: 35px;
     border-radius: 50%;
   }
+
   .member-info {
     background-color: rgba(0, 0, 0, 0.1);
     display: flex;
@@ -178,6 +197,7 @@
     width: 100%;
     border-radius: 8px;
     height: 92px;
+
     .member-name {
       font-size: 0.9em;
 
@@ -185,20 +205,24 @@
       flex-direction: column;
       justify-content: flex-start;
       padding: 0.5em 1em;
+
       .m-name {
         font-weight: bold;
       }
+
       .pending,
       .member {
-        color: rgba(62, 62, 120, 1);
+        color: #0B78B8;
       }
     }
   }
+
   .about-member-title {
     margin: 1em auto;
     text-align: center;
     font-weight: bold;
   }
+
   p {
     padding: 10px auto;
     margin-bottom: 2em;
@@ -208,12 +232,14 @@
     hyphens: auto;
     height: 260px;
   }
+
   .decide-btns {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     gap: 1.5em;
     flex-wrap: wrap;
+
     button {
       width: 100px;
       padding: 5px 10px;
@@ -222,18 +248,22 @@
       font-weight: 400;
       box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     }
+
     .btn-accept {
-      color: rgba(62, 62, 120, 1);
-      border: 4px solid rgba(62, 62, 120, 1);
+      color: #0B78B8;
+      border: 4px solid #0B78B8;
+
       &:hover {
-        background-color: rgba(62, 62, 120, 1);
+        background-color: #0B78B8;
         transition: background-color 0.2s;
         color: white;
       }
     }
+
     .btn-decline {
       color: rgb(192, 17, 17);
       border: 4px solid rgb(192, 17, 17);
+
       &:hover {
         background-color: rgb(192, 17, 17);
         transition: background-color 0.2s;
@@ -251,6 +281,7 @@
   gap: 2em;
   align-items: center;
   justify-content: center;
+
   .study {
     display: flex;
     flex-direction: column;
@@ -262,18 +293,56 @@
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     border-radius: 8px;
     padding: 20px;
+
     span {
       word-wrap: break-word;
     }
+
     .study-title {
       font-size: 1.3em;
       margin-bottom: 0.5em;
     }
+
     button {
       border-radius: 8px;
       box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
       border: 1px solid rgba(1, 1, 1, 0.5);
       height: 50px;
+    }
+  }
+
+}
+
+.proj-create {
+  button {
+    height: 100px;
+    font-size: 1.3em;
+    border: 8px solid #0B78B8;
+    border-radius: 8px;
+    color: #0B78B8;
+    font-weight: bold;
+    background-color: white;
+
+    &:hover {
+      transition: 0.2s;
+      background-color: #0B78B8;
+      color: white;
+    }
+  }
+
+  .title {
+    border-radius: 8px;
+    padding: 0.5em;
+    display: flex;
+    flex-direction: column;
+
+    input, textarea {
+      border: 1px solid rgba(62, 62, 120, 0.2);
+      border-radius: 8px;
+      height: 50px;
+      font-size: 1.1em;
+      // max-width: 600px;
+      padding: 0.5em;
     }
   }
 }

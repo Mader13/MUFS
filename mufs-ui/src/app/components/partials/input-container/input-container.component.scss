@@ -1,18 +1,7 @@
 .container {
-  box-sizing: border-box;
-  align-self: center;
-  justify-self: center;
-  min-width: 300px;
-  min-height: 130px;
-  display: flex;
-  flex-direction: column;
-  border-radius: 8px;
-  padding-top: 0.3rem;
-  border: 1px solid rgba(62, 62, 120, 0.7);
   background-color: white;
 }
 
 .content {
   align-self: flex-start;
-  padding: 15px;
 }

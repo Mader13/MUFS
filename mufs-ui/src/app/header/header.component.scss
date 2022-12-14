@@ -3,29 +3,26 @@ nav {
   flex-direction: row;
   justify-content: space-around;
   width: 100%;
+  margin-top: 20px;
 }
+
 ul {
   list-style-type: none;
   display: flex;
   padding-left: 0;
 }
+
 .navbar {
-  height: 120px;
-  padding: 25px 100px 25px 100px;
-
   .navbar-brand {
-    img {
-      width: 220px;
-    }
+    margin: 0 10px;
+  }
 
-    font-weight: bold;
-    margin-right: 25px;
+  ul {
+    margin: 0;
   }
 
   .nav-link {
     font-size: 1.05em;
-    margin: auto 10px;
-    padding: 18px;
     border-radius: 8px;
     color: rgb(0, 0, 0);
     font-weight: 600;
@@ -59,21 +56,24 @@ ul {
   /* The container <div> - needed to position the dropdown content */
   .dropdown {
     font-size: 1.1em;
-
     position: relative;
     display: inline-block;
+    margin-bottom: 5px;
   }
-
+  .dropdown:hover {
+    margin-bottom: 0px;
+    border-bottom: 5px solid rgba(0, 0, 0, 0);
+  }
   /* Dropdown Content (Hidden by Default) */
   .dropdown-content {
     display: none;
     position: absolute;
-    background-color: rgba(62, 62, 120, 1);
+    background-color: rgb(11, 120, 184);
     min-width: 200px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
-    padding-top: 20px;
-    border-bottom: 1px solid rgba(62, 62, 120, 1);
+    margin-top: 5px;
+    border-bottom: 1px solid rgb(11, 120, 184);
     border-radius: 8px;
   }
 
@@ -88,7 +88,7 @@ ul {
 
   /* Change color of dropdown links on hover */
   .dropdown-content a:hover {
-    background-color: rgb(37, 42, 173);
+    background-color: #4DA7DC;
     border-radius: 8px;
   }
 

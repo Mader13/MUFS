@@ -1,54 +1,50 @@
 <div class="container">
-  <div class="shape">
-    <img
-      class="profile-picture"
-      src="../../../../assets/images/User-profile-picture.png"
-      alt=""
-    />
-  </div>
   <div *ngIf="user.email" class="user-info">
-    <h3 class="user-name">
-      {{ user.name }} <br />
-      <small class="text-muted">{{ user.email }}</small>
-    </h3>
-    <div class="container px-4">
-      <div class="row gx-5">
-        <div class="col change-password">
-          <h3>Сменить пароль</h3>
-          <label>Старый пароль</label>
-          <input type="password" name="oldPassword" value="" />
-          <label>Новый пароль</label>
-          <input type="password" name="newPassword" value="" />
-          <button>Сменить пароль</button>
+    <div class="d-flex flex-column flex-md-row gap-3 align-items-center align-items-md-start">
+      <div class="d-flex flex-column gap-1">
+        <div class="shape">
+          <img class="profile-picture" src="../../../../assets/images/User-profile-picture.png" alt="" />
         </div>
+        <h3 class="user-name">
+          {{ user.name }} <br />
+          <small class="text-muted">{{ user.email }}</small>
+        </h3>
       </div>
-      <div class="current-projects">
-        <button class="btn-begin-project" routerLink="/create-project">
-          Создать курс
-        </button>
-        <h2>Ваши текущие курсы</h2>
-        <h1 *ngIf="user.idProject.length == 0">Пока что здесь пусто</h1>
-        <div class="user-projects">
-          <div class="user-project" *ngFor="let p of this.projects">
-            <a routerLink="/projects/{{ p.id }}"
-              ><h3>{{ p.title }}</h3></a
-            >
-            <span>Количество участников: {{ p.members.length }}</span>
-            <span class="leader-status" *ngIf="user.id == p.leader.toString()"
-              >Организатор</span
-            >
+      <div class="container px-4">
+        <div class="row gx-5">
+          <div class="col change-password d-flex flex-column gap-3">
+            <h3>Сменить пароль</h3>
+            <label>Старый пароль</label>
+            <input type="password" name="oldPassword" value="" />
+            <label>Новый пароль</label>
+            <input type="password" name="newPassword" value="" />
+            <button>Сменить пароль</button>
           </div>
         </div>
       </div>
-
+    </div>
+    <div class="current-projects">
+      <button class="btn-begin-project" routerLink="/create-project">
+        Создать курс
+      </button>
+      <h2>Ваши текущие курсы</h2>
+      <h1 *ngIf="user.idProject.length == 0">Пока что здесь пусто</h1>
       <div class="user-projects">
-        <div class="user-project" *ngFor="let p of this.studies">
-          <h3>{{ p.title }}</h3>
-          <span>Дата и время: {{ p.date }}</span>
-          <span class="leader-status" *ngIf="user.id == p.leader.toString()"
-            >Организатор</span
-          >
+        <div class="user-project" *ngFor="let p of this.projects">
+          <a routerLink="/projects/{{ p.id }}">
+            <h3>{{ p.title }}</h3>
+          </a>
+          <span>Количество участников: {{ p.members.length }}</span>
+          <span class="leader-status" *ngIf="user.id == p.leader.toString()">Организатор</span>
         </div>
+      </div>
+    </div>
+
+    <div class="user-projects">
+      <div class="user-project" *ngFor="let p of this.studies">
+        <h3>{{ p.title }}</h3>
+        <span>Дата и время: {{ p.date }}</span>
+        <span class="leader-status" *ngIf="user.id == p.leader.toString()">Организатор</span>
       </div>
     </div>
   </div>

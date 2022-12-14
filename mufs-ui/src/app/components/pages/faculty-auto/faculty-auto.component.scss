@@ -1,57 +1,35 @@
 .faculty-description {
-  background-color: #3c71c1;
+  background: linear-gradient(91.59deg, #973CC1 5.04%, #E84EBD 102.5%);
   color: #ffffff;
   border: none;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 50px;
-  margin-bottom: 50px;
   border-radius: 16px;
-  height: 170px;
-  width: 900px;
   cursor: default;
   display: flex;
+  padding: 10px;
 }
-.images {
-  width: 12%;
-  margin-left: 15px;
-}
-.description {
-  margin-top: auto;
-  margin-bottom: auto;
-}
+
 .about {
-  hyphens: auto;
-  margin-right: 15px;
+  margin: 0;
 }
-.courses {
-  margin: 50px;
-  min-height: 70vh;
-}
+
 .course_h1 {
   font-size: 24pt;
   margin-bottom: 15px;
 }
-.lessons {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
+
 .lesson {
   color: #ffffff;
-  border: 4px solid rgba($color: #5c5c5c, $alpha: 0.5);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
   padding: 15px;
   border-radius: 16px;
-  margin-bottom: 15px;
-  margin-right: 15px;
   width: 450px;
   color: black;
-  display: flex;
-  justify-content: space-between;
 }
+
 .desc {
   font-size: 10pt;
 }
+
 .link-project-about {
   background-color: #0b78b8;
   color: #ffffff;
@@ -62,6 +40,7 @@
   text-decoration: none;
   margin-top: auto;
 }
+
 .link-project-about:hover {
   background-color: rgb(77, 167, 220);
   transition: color 0.5s;

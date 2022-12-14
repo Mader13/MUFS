@@ -1,19 +1,19 @@
 html, body {font-family:'Roboto Regular';
 }
 
+footer {
+  padding-top: 50px;
+  background: linear-gradient(286.75deg, #0B78B8 16.19%, #4DA7DC 71.68%);
+box-shadow: inset 0px 50px 30px -20px #FFFFFF;
+}
+
 .logo {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
-.text_about {
-  position: absolute;
-  width: 236px;
-  height: 20px;
-  margin-top: 50px;
-  left: auto;
-  
+.text_about {  
   font-family: 'Roboto Regular';
   font-style: normal;
   font-weight: 800;

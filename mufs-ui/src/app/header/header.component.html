@@ -1,19 +1,19 @@
-<nav class="navbar navbar-expand-lg navbar-light container-md">
-  <ul>
+<nav class="navbar navbar-expand-lg container-lg gap-3 gap-lg-5 d-flex flex-column flex-lg-row col-6 col-lg-5 mb-md-5">
+  <ul class="gap-3 order-2 order-lg-1">
     <li class="nav-item">
-      <a class="nav-link" routerLink="/">Факультеты</a>
+      <a class="nav-link text-nowrap" routerLink="/">Факультеты</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" routerLink="/about">О нас</a>
+      <a class="nav-link text-nowrap" routerLink="/about">О нас</a>
     </li>
   </ul>
 
-  <a href="#">
-    <img src="../../assets/images/Logo.svg" />
+  <a href="#" class="navbar-brand order-1 order-lg-2">
+    <img class="w-100" src="../../assets/images/Logo.svg" />
   </a>
-  <div class="d-flex flex-row">
+  <div class="d-flex flex-row order-last">
     <div *ngIf="getEmail" class="dropdown">
-      <div class="profile-part">
+      <div class="profile-part d-flex flex-row">
         <button class="dropbtn">{{ user.name }}</button>
         <img src="../../assets/images/User-profile-picture.svg" alt="" />
       </div>

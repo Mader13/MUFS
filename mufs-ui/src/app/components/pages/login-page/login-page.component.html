@@ -1,6 +1,6 @@
 <div class="container-sm">
   <div class="details">
-    <form [formGroup]="loginForm" (ngSubmit)="submit()">
+    <form [formGroup]="loginForm" (ngSubmit)="submit()" class="d-flex flex-column gap-4">
       <text-input
         [control]="fc.email"
         [showErrorsWhen]="isSubmitted"
@@ -21,7 +21,7 @@
 
       <div class="button"><button type="submit">Войти</button></div>
       <div class="register">
-        <span>Не зарегистрированы?</span>&nbsp;
+        <span>Не зарегистрированы?</span>
         <a routerLink="/register-user" [queryParams]="{ returnUrl: returnUrl }"
           >Пройти регистрацию</a
         >
