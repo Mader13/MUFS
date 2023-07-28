@@ -1,7 +1,8 @@
 import { connect, ConnectOptions } from "mongoose";
-
+const MONGO_URI =
+  "mongodb+srv://minti:1Q5zKGGGsjpPbfuu@cluster1.k3ghmhs.mongodb.net/mufs?retryWrites=true&w=majority";
 export const dbConnect = () => {
-  connect(process.env.MONGO_URI!, {
+  connect(MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   } as ConnectOptions).then(
