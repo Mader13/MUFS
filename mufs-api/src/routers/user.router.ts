@@ -13,7 +13,7 @@ router.delete(
     UserModel.deleteOne({ _id: req.params.id }).then((result) => {
       console.log(result);
       res.status(200).json({
-        message: "User deleted!",
+        message: "User is deleted!",
       });
     });
   })
